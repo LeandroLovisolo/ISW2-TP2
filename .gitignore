@@ -1,0 +1,10 @@
+
+tex/informe.aux
+
+tex/informe.log
+
+*.out
+
+*.toc
+
+informe.pdf
