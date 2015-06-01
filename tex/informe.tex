@@ -143,18 +143,134 @@ Aquí se presenta una planificación de las fases de elaboración y construcció
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Plan de proyecto                                                          %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Plan de proyecto}
-\newpage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Casos de uso                                                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Casos de uso}
 Para comenzar a trabajar sobre la planificación del proyecto se identificó un conjunto de casos de uso que cubriera la mayoría de las funcionalidades que se desprenden de los requerimientos obtenidos. En un principio se los agrupó, tal y como se muestra a continuación, por su funcionalidad. Posteriormente, y en base al análisis de riesgos y a la información destilada de la fase de incepción, se utilizó este refinamiento para la organización y planificación de las iteraciones de elaboración y construcción.
+
+\begin{itemize}
+
+\item \textbf{Comunicación}
+\begin{itemize}
+\item Enviando resultados de campañas a la NSA.
+\item Enviando mensajes de campañas por medios seleccionados.
+\item Respondiendo mensaje a una pregunta.
+\end{itemize}
+
+\item \textbf{Monitoreo}
+\begin{itemize}
+\item Consultando estado de una campaña.
+\item Visualizando el mapa de evolución de las campañas.
+\end{itemize}
+
+\item \textbf{Procesamiento}
+\begin{itemize}
+\item Registrando cantidad de mensajes enviados por campaña.
+\item Generando factura mensual para el sector privado.
+\end{itemize}
+
+\item \textbf{Gestión}
+\begin{itemize}
+\item Ingresando los resultados de una campaña.
+\item Creando, editando y eliminando grupos de destinatarios.
+\item Creando una campaña desde el sector público/privado.
+\item Desuscribiendo a un destinatario de una campaña.
+\item Reinscribiendo a un destinatario en una campaña de la que se desuscribió.
+\item Agregando evaluación manual del resultado de las preguntas.
+\item Aceptando campaña privada.
+\item Creando cuestionario de campañas de evaluación de campañas.
+\item Agregando nuevo usuario proveedor de contenidos.
+\item Creando, editando y eliminando usuarios.
+\end{itemize}
+
+\item \textbf{Supervisión}
+\begin{itemize}
+\item Supervisando campañas privadas (supervisar encuestas)?
+\item Pidiendo reportes de resultados de una campaña
+\item Reportando información anonimizada de grupos de destinatarios.
+\end{itemize}
+
+\item \textbf{Seguridad}
+\begin{itemize}
+\item Autenticando usuario.
+\item Guardar datos cifrados en servidores locales.
+\end{itemize}
+\end{itemize}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Plan de proyecto                                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Plan de proyecto}
+
+\subsection{Iteraciones}
+La división de los CU en las distintas iteraciones y la organización de las mismas estuvo pautada por las necesidades manifestadas por los stakeholders y un incremento de funcionalidad, partiendo del núcleo más importante y revistiendo la aplicación a lo largo del tiempo de lógica menos prioritaria.
+
+\textbf{Primera iteración} [3 semanas]
+\begin{enumerate}
+\item Guardar datos cifrados en servidores locales.
+\item Creando una campaña desde el sector público/privado.
+\item Enviando mensajes de campañas por medios seleccionados.
+\item Autenticando usuario.
+\end{enumerate}
+
+\textbf{Segunda iteración} [3 semanas]
+\begin{enumerate}
+\item Creando, editando y eliminando usuarios.
+\item Consultando estado de una campaña.
+\item Registrando cantidad de mensajes enviados por campaña.
+\item Creando, editando y eliminando grupos de destinatarios.
+\end{enumerate}
+
+\textbf{Tercera iteración} [3 semanas]
+\begin{enumerate}
+\item Creando cuestionario de campañas de evaluación de campañas.
+\item Respondiendo mensaje a una pregunta.
+\item Desuscribiendo a un destinatario de una campaña.
+\item Reinscribiendo a un destinatario en una campaña de la que se desuscribió.
+\end{enumerate}
+
+\textbf{Cuarta iteración} [2 semanas]
+\begin{enumerate}
+\item Ingresando los resultados de una campaña.
+\item Pidiendo reportes de resultados de una campaña.
+\item Agregando evaluación manual del resultado de las preguntas.
+\end{enumerate}
+
+\textbf{Quinta iteración} [3 semanas]
+\begin{enumerate}
+\item Aceptando campaña privada.
+\item Reportando información anonimizada de grupos de destinatarios.
+\item Generando factura mensual para el sector privado.
+\item Enviando resultados de campañas a la NSA.
+\end{enumerate}
+
+\textbf{Sexta iteración} [2 semanas]
+\begin{enumerate}
+\item Supervisando campañas privadas (supervisar encuestas)?
+\item Visualizando el mapa de evolución de las campañas.
+\item Agregando nuevo usuario proveedor de contenidos.
+\end{enumerate}
+
+
+\subsection{Alcance de casos de usos de la primera iteración.}
+\textbf{Guardar datos cifrados en servidores locales.}\\
+Los datos de los usuarios deben almacenarse encriptados en los servidores locales de su región correspondiente. Llamamos datos a los registros en la base de datos conteniendo la información necesaria para identificar a un usuario, como por ejemplo <nombre, apellido, dni, número de teléfono, es fumador>. Éstos deben guardarse encriptados para garantizar la confidencialidad de los mismos, por ejemplo, utilizando un sistema de encriptación de clave pública/privada.
+
+\textbf{Creando una campaña desde el sector público/privado.}\\
+La creación de una campaña consiste en ingresar un conjunto de mensajes con el horario en el que deben ser enviados, un conjunto de grupos de destinatarios concernientes al objetivo de la campaña, el método a través del que se enviarán.
+
+\textbf{Enviando mensajes de campañas por medios seleccionados.}\\
+Se envían los mensajes de cada campaña a sus destinatarios correspondientes en el momento indicado para cada mensaje. Además, dicho mensaje es enviado a través de los canales previamente seleccionados.
+
+\textbf{Enviando mensajes de campañas por medios seleccionados.}
+Cada región tiene un sistema de envío de mensajes que periódicamente recorre las campañas asociadas a esa región y envía los mensajes de las mismas cumpliendo su fecha y hora de envío. Además, cada mensaje es enviado por los canales previamente seleccionados a través de la infraestructura propia de cada región.
+
+\textbf{Autenticando usuario.}
+Se solicita un usuario y contraseña cuando una persona intenta iniciar una sesión en el sistema para crear una campaña, consultar el estado de una campaña, etc. El sistema verifica que las credenciales ingresadas sean válidas, y en caso contrario deniega el acceso al mismo.
 
 \newpage
 
