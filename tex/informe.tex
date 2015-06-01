@@ -194,7 +194,7 @@ Para comenzar a trabajar sobre la planificación del proyecto se identificó un 
 \item \textbf{Seguridad}
 \begin{itemize}
 \item Autenticando usuario.
-\item Guardar datos cifrados en servidores locales.
+\item Guardando datos cifrados en servidores locales.
 \end{itemize}
 \end{itemize}
 
@@ -211,7 +211,7 @@ La división de los CU en las distintas iteraciones y la organización de las mi
 
 \textbf{Primera iteración} [3 semanas]
 \begin{enumerate}
-\item Guardar datos cifrados en servidores locales.
+\item Guardando datos cifrados en servidores locales.
 \item Creando una campaña desde el sector público/privado.
 \item Enviando mensajes de campañas por medios seleccionados.
 \item Autenticando usuario.
@@ -257,20 +257,29 @@ La división de los CU en las distintas iteraciones y la organización de las mi
 
 
 \subsection{Alcance de casos de usos de la primera iteración}
-\textbf{Guardar datos cifrados en servidores locales.}\\
-Los datos de los usuarios deben almacenarse encriptados en los servidores locales de su región correspondiente. Llamamos datos a los registros en la base de datos conteniendo la información necesaria para identificar a un usuario, como por ejemplo <nombre, apellido, dni, número de teléfono, es fumador>. Éstos deben guardarse encriptados para garantizar la confidencialidad de los mismos, por ejemplo, utilizando un sistema de encriptación de clave pública/privada.
+\textbf{Guardando datos cifrados en servidores locales.}
 
-\textbf{Creando una campaña desde el sector público/privado.}\\
-La creación de una campaña consiste en ingresar un conjunto de mensajes con el horario en el que deben ser enviados, un conjunto de grupos de destinatarios concernientes al objetivo de la campaña, el método a través del que se enviarán.
+Los datos de los usuarios deben almacenarse encriptados en los servidores locales de su región correspondiente para poder garantizar la confidencialidad de los mismos.
 
-\textbf{Enviando mensajes de campañas por medios seleccionados.}\\
+Llamamos datos a los registros en la base de datos que contienen información sobre los residentes de la región. Estos pueden ser datos básicos como por ejemplo (nombre, apellido, dni, número de teléfono) y datos adiciones como si es fumador, si poseen un auto, si les gusta correr, etc.
+
+\textbf{Creando una campaña desde el sector público/privado.}
+
+La creación de una campaña consiste en el ingreso de los datos necesarios para la creación de la misma, es decir, un conjunto de mensajes con el horario en el que deben ser enviados, un conjunto de grupos de destinatarios concernientes al objetivo de la campaña y el canal a través del que se enviarán (SMS, Facebook, etc).
+
+\textbf{Enviando mensajes de campañas por medios seleccionados.}
+
 Se envían los mensajes de cada campaña a sus destinatarios correspondientes en el momento indicado para cada mensaje. Además, dicho mensaje es enviado a través de los canales previamente seleccionados.
 
 \textbf{Enviando mensajes de campañas por medios seleccionados.}
+
 Cada región tiene un sistema de envío de mensajes que periódicamente recorre las campañas asociadas a esa región y envía los mensajes de las mismas cumpliendo su fecha y hora de envío. Además, cada mensaje es enviado por los canales previamente seleccionados a través de la infraestructura propia de cada región.
 
 \textbf{Autenticando usuario.}
-Se solicita un usuario y contraseña cuando una persona intenta iniciar una sesión en el sistema para crear una campaña, consultar el estado de una campaña, etc. El sistema verifica que las credenciales ingresadas sean válidas, y en caso contrario deniega el acceso al mismo.
+
+Se solicita un usuario y contraseña cuando una persona intenta iniciar una sesión en el sistema para crear una campaña y consultar el estado de una campaña, entre otras. La autenticación también abarca al sector privado dónde tendran acceso sólo a acciones de su sector.
+
+El sistema verifica que las credenciales ingresadas sean válidas, y en caso contrario deniega el acceso al mismo.
 
 \subsection{Tareas CU Primera iteración}
 A continuación se detallan las tareas diagramadas para los casos de uso incluidos en la primera iteración con su respectiva estimación de horas.
@@ -278,7 +287,7 @@ A continuación se detallan las tareas diagramadas para los casos de uso incluid
 \begin{table}[h!]
     \begin{tabular}{lll}
 	\hline
-	CU1 & Guardar datos cifrados en servidores locales & 50h \\
+	CU1 & Guardando datos cifrados en servidores locales & 50h \\
 	\hline \\
 	T01 & Investigación de fuentes de información disponibles de cada usuario accesible desde el sistema & 4h \\
 	T02 & Definición de campos relevantes para almacenar por usuario & 3h \\
