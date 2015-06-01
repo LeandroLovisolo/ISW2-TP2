@@ -68,6 +68,17 @@
   \end{center}
 }
 
+\newcommand{\riesgo}[7]{
+	\underline{Riesgo {#1}:}
+	\begin{itemize}		
+		\item \textbf{Descripción:} {#2}
+		\item \textbf{Probablidad:} {#3}
+		\item \textbf{Impacto:} {#4}
+		\item \textbf{Exposicion:} {#5}
+		\item \textbf{Mitigacion:} {#6}
+		\item \textbf{Plan de contingencia:} {#7}
+	\end{itemize}
+}
 
 %%%%%%%%%% Miscelánea - Fin %%%%%%%%%%
 
@@ -334,22 +345,22 @@ A continuación se detallan las tareas diagramadas para los casos de uso incluid
 
 \subsection{Detalle Primera iteración}
 \begin{itemize}
-\item \textbf{Identificación:} E1
-\item \textbf{Tipo de iteración:} Elaboración
-\item \textbf{Cantidad total de horas:}
-\item \textbf{Tareas:}
+	\item \textbf{Identificación:} E1
+	\item \textbf{Tipo de iteración:} Elaboración
+	\item \textbf{Cantidad total de horas:} 125
+	\item \textbf{Tareas:}
 \begin{enumerate}
-\item Refinamiento de objetivos y requerimientos (2h)
-\item Análisis de riesgo
-\item Reconocimiento de casos de uso (3h)
-\item División de CU en iteraciones según prioridad (1h)
-\item Estimación de tiempos de CU (1h)
-\item Análisis de escenarios y atributos de calidad del sistema (2h)
-\item Diseño de arquitectura (8h)
-\item Realización de tareas de CU1 (30h)
-\item Realización de tareas de CU2 (13h)
-\item Realización de tareas de CU3 (23h)
-\item Realización de tareas de CU4 (40h)
+	\item Refinamiento de objetivos y requerimientos (2h)
+	\item Análisis de riesgo (2h)
+	\item Reconocimiento de casos de uso (3h)
+	\item División de CU en iteraciones según prioridad (1h)
+	\item Estimación de tiempos de CU (1h)
+	\item Análisis de escenarios y atributos de calidad del sistema (2h)
+	\item Diseño de arquitectura (8h)
+	\item Realización de tareas de CU1 (30h)
+	\item Realización de tareas de CU2 (13h)
+	\item Realización de tareas de CU3 (23h)
+	\item Realización de tareas de CU4 (40h)
 \end{enumerate}
 \end{itemize}
 
@@ -362,6 +373,15 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Análisis de riesgos}
+
+\riesgo{1}
+		{Es importante la disponibilidad constante del servicio, sin embargo se sabe que la red pública no tiene un 100 \% de cobertura en el territorio del país, además de que pueden presentarse problemas de conectividad (por ejemplo, zona patagónica).}
+		{Media}
+		{Alto}
+		{Alta}
+		{Utilizar el servicio provisto por la NSA}
+		{No se}
+
 \newpage
 
 \end{document}
