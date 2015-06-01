@@ -69,15 +69,15 @@
 }
 
 \newcommand{\riesgo}[7]{
-	\underline{Riesgo {#1}:}
-	\begin{itemize}		
-		\item \textbf{Descripción:} {#2}
-		\item \textbf{Probablidad:} {#3}
-		\item \textbf{Impacto:} {#4}
-		\item \textbf{Exposicion:} {#5}
-		\item \textbf{Mitigacion:} {#6}
-		\item \textbf{Plan de contingencia:} {#7}
-	\end{itemize}
+  \underline{Riesgo {#1}:}
+  \begin{itemize}   
+    \item \textbf{Descripción:} {#2}
+    \item \textbf{Probablidad:} {#3}
+    \item \textbf{Impacto:} {#4}
+    \item \textbf{Exposición:} {#5}
+    \item \textbf{Mitigación:} {#6}
+    \item \textbf{Plan de contingencia:} {#7}
+  \end{itemize}
 }
 
 %%%%%%%%%% Miscelánea - Fin %%%%%%%%%%
@@ -297,70 +297,70 @@ A continuación se detallan las tareas diagramadas para los casos de uso incluid
 \\
 
 \begin{tabular}{lp{13cm}l}
-	\hline
-	CU1 & Guardando datos cifrados en servidores locales & 50h \\
-	\hline \\
-	T01 & Investigación de fuentes de información disponibles de cada usuario accesible desde el sistema & 4h \\
-	T02 & Definición de campos relevantes para almacenar por usuario & 3h \\
-	T03 & Diseño de la base de datos & 4h \\
-	T04 & Definición de motor de búsqueda a utilizar & 2h \\
-	T05 & Definición de método de encriptación & 2h \\
-	T06 & Implementación de CU1 & 10h\\
-	T07 & Testing de CU1 & 5h \\
-	\hline
+  \hline
+  CU1 & Guardando datos cifrados en servidores locales & 50h \\
+  \hline \\
+  T01 & Investigación de fuentes de información disponibles de cada usuario accesible desde el sistema & 4h \\
+  T02 & Definición de campos relevantes para almacenar por usuario & 3h \\
+  T03 & Diseño de la base de datos & 4h \\
+  T04 & Definición de motor de búsqueda a utilizar & 2h \\
+  T05 & Definición de método de encriptación & 2h \\
+  T06 & Implementación de CU1 & 10h\\
+  T07 & Testing de CU1 & 5h \\
+  \hline
 \end{tabular}
 
 \begin{tabular}{lp{13cm}l}
-	\hline
-	CU2 & Creando una campaña desde el sector público/privado & 13h \\
-	\hline \\
-	T01 & Investigar librerías y herramientas  & 5h \\
-	T02 & Diseño de la interfaz del usuario & 2h \\
-	T03 & Implementación de CU2 & 4h \\
-	T04 & Testing de CU2 & 2h \\
-	\hline
+  \hline
+  CU2 & Creando una campaña desde el sector público/privado & 13h \\
+  \hline \\
+  T01 & Investigar librerías y herramientas  & 5h \\
+  T02 & Diseño de la interfaz del usuario & 2h \\
+  T03 & Implementación de CU2 & 4h \\
+  T04 & Testing de CU2 & 2h \\
+  \hline
 \end{tabular}
 
 \begin{tabular}{lp{13cm}l}
-	\hline
-	CU3 &  Enviando mensajes de campañas por medios seleccionados & 23h \\
-	\hline \\
-	T01 & Investigación de los distintos medios de envío de mensajes & 8h \\
-	T02 & Diseño de un servicio EmisorDeMensajes, que en intervalos de tiempo regulares envíe los mensajes programados & 6h \\
-	T03 & Implementación de CU3 & 6h \\
-	T04 & Testing de CU3 & 3h \\
-	\hline
+  \hline
+  CU3 &  Enviando mensajes de campañas por medios seleccionados & 23h \\
+  \hline \\
+  T01 & Investigación de los distintos medios de envío de mensajes & 8h \\
+  T02 & Diseño de un servicio EmisorDeMensajes, que en intervalos de tiempo regulares envíe los mensajes programados & 6h \\
+  T03 & Implementación de CU3 & 6h \\
+  T04 & Testing de CU3 & 3h \\
+  \hline
 \end{tabular}
 
 \begin{tabular}{lp{13cm}l}
-	\hline
-	CU4 & Autenticando usuario & 40h \\
-	\hline \\
-	T01 & Diseño de la interfaz del usuario para autenticación & 1h \\
-	T02 & Diseño de los requisitos mínimos de las contraseñas & 1h \\
-	T02 & Implementación de CU4 & 1h \\
-	T03 & Testing de CU4 & 1h \\
-	\hline
+  \hline
+  CU4 & Autenticando usuario & 4h \\
+  \hline \\
+  T01 & Diseño de la interfaz del usuario para autenticación & 1h \\
+  T02 & Diseño de los requisitos mínimos de las contraseñas & 1h \\
+  T02 & Implementación de CU4 & 1h \\
+  T03 & Testing de CU4 & 1h \\
+  \hline
 \end{tabular}
 
 \subsection{Detalle Primera iteración}
 \begin{itemize}
-	\item \textbf{Identificación:} E1
-	\item \textbf{Tipo de iteración:} Elaboración
-	\item \textbf{Cantidad total de horas:} 125
-	\item \textbf{Tareas:}
+  \item \textbf{Identificación:} E1
+  \item \textbf{Tipo de iteración:} Elaboración
+  \item \textbf{Cantidad total de horas:} 125
+  \item \textbf{Tareas:}
 \begin{enumerate}
-	\item Refinamiento de objetivos y requerimientos (2h)
-	\item Análisis de riesgo (2h)
-	\item Reconocimiento de casos de uso (3h)
-	\item División de CU en iteraciones según prioridad (1h)
-	\item Estimación de tiempos de CU (1h)
-	\item Análisis de escenarios y atributos de calidad del sistema (2h)
-	\item Diseño de arquitectura (8h)
-	\item Realización de tareas de CU1 (30h)
-	\item Realización de tareas de CU2 (13h)
-	\item Realización de tareas de CU3 (23h)
-	\item Realización de tareas de CU4 (40h)
+  \item Refinamiento de objetivos y requerimientos (2h)
+  \item Análisis de riesgo (2h)
+  \item Reconocimiento de casos de uso (3h)
+  \item División de CU en iteraciones según prioridad (1h)
+  \item Estimación de tiempos de CU (1h)
+  \item Análisis de escenarios y atributos de calidad del sistema (2h)
+  \item Diseño de arquitectura (8h)
+  \item Realización de tareas de CU1 (30h)
+  \item Realización de tareas de CU2 (13h)
+  \item Realización de tareas de CU3 (23h)
+  \item Realización de tareas de CU4 (40h)
 \end{enumerate}
 \end{itemize}
 
@@ -375,37 +375,43 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 \section{Análisis de riesgos}
 
 \riesgo{1}
-{Mantener la disponibilidad del servicio en la totalidad del país es importante. Sin embargo, se conoce que la disponibilidad del servicio puede tener dificultades en algunas zonas, como por ejemplo la patagonia.}
-{Media}
-{Alto}
-{Alta}
-{Mantener un sistema que permita verificar la conexión de los distintos nodos que se encuentran en distintas regiones del país}
-{Al reportarse un fallo en la conexión, tercerizar la conexión a privados hasta que se arregle el problema}
+	{Mantener la disponibilidad del servicio en la totalidad del país es importante. Sin embargo, se conoce que la disponibilidad del servicio puede tener dificultades en algunas zonas, como por ejemplo la patagonia.}
+	{Media}
+	{Alto}
+	{Alta}
+	{Mantener un sistema que permita verificar la conexión de los distintos nodos que se encuentran en distintas regiones del país}
+	{Al reportarse un fallo en la conexión, tercerizar la conexión a privados hasta que se arregle el problema}
 
 \riesgo{2}
-{ArSat nos provee actualmente conexión y procesamiento en la región de Córdoba. Si ArSat tiene un problema entre los nodos de ANSES en los que distribuye sus servicios, existirán problemas para procesar la información almacenada.}
-{Media}
-{Medio}
-{Medio}
-{Realizar backups de los nodos regionales con cierta frecuencia y almacenarlos de forma cifrada en una empresa tercerizada; controlar el estado de los nodos dentro de las regiones}
-{Utilizar el backup cifrado en la empresa para solventar la falta de conexión mientras se arregla}
+    {ArSat nos provee actualmente conexión y procesamiento en la región de Córdoba. Si ArSat tiene un problema entre los nodos de ANSES en los que distribuye sus servicios, existirán problemas para procesar la información almacenada.}
+    {Media}
+    {Medio}
+    {Medio}
+    {Realizar backups de los nodos regionales con cierta frecuencia y almacenarlos de forma cifrada en una empresa tercerizada; controlar el estado de los nodos dentro de las regiones}
+    {Utilizar el backup cifrado en la empresa para solventar la falta de conexión mientras se arregla}
 
 \riesgo{3}
-{El modelo de abono que contabiliza los mensajes enviados está por migrar pronto a mejores servidores, por lo que se esperan algunas fallas de comunicación durante la transición.}
-{Alta}
-{Alto}
-{Alta}
-{Mantener un sistema de respaldo durante la migración del servicio para así poder asegurar la comunicación.}
-{Utilizar el sistema de respaldo para mantener la mayor correctitud posible los balances en el modelo de abonos a privados.}
+    {El modelo de abono que contabiliza los mensajes enviados está por migrar pronto a mejores servidores, por lo que se esperan algunas fallas de comunicación durante la transición.}
+    {Alta}
+    {Alto}
+    {Alta}
+    {Mantener un sistema de respaldo durante la migración del servicio para así poder asegurar la comunicación.}
+    {Utilizar el sistema de respaldo para mantener la mayor correctitud posible los balances en el modelo de abonos a privados.}
 
 \riesgo{4}
-{Un usuario malintencionado o un intruso utiliza una de las cuentas pertenecientes a los usuarios públicos para realizar acciones maliciosas a su favor}
-{Media}
-{Medio}
-{Media}
-{Mantener en cada región un reporte de las acciones que realizan sus usuarios, contratar un servicio de atención para gestionar denuncias de mal uso e implementar el protocolo de 2nd step verification para brindar seguridad de acceso.}
-{Utilizar los reportes de actividad de los usuarios para revertir los cambios hechos.}
+    {Un usuario malintencionado o un intruso utiliza una de las cuentas pertenecientes a los usuarios públicos para realizar acciones maliciosas a su favor}
+    {Media}
+    {Medio}
+    {Media}
+    {Mantener en cada región un reporte de las acciones que realizan sus usuarios, contratar un servicio de atención para gestionar denuncias de mal uso e implementar el protocolo de 2nd step verification para brindar seguridad de acceso.}
+    {Utilizar los reportes de actividad de los usuarios para revertir los cambios hechos.}
 
-\newpage
+\riesgo{5}
+    {Se debe poder monitorear el estado de las campañas de manera ágil. No se deben admitir demoras de ningún tipo.}
+    {Media}
+    {Alto}
+    {Media}
+    {Hostear los servicios de reporte de estado de campañas utilizando la vasta infraestructura del dueño del sistema de abono de datos.}
+    {Crear instancias adicionales de los servicios necesarios en caso de fallas o de sobrecarga de las instancias existentes.}
 
 \end{document}
