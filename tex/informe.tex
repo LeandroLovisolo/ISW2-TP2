@@ -149,7 +149,7 @@ Vita, Sebastián        & 149/11 & sebastian\_vita@yahoo.com.ar\\
 \section{Introducción}
 
 En el presente trabajo se aborda la extensión del diseño presentado en el TP1, debiendo ahora plantear un sistema de mensajes de muchas campañas a nivel nacional tanto para servicios públicos como privados. Dada esta nueva situación, aparecen varios stakeholders que, por su colaboración en el proyecto proveyendo servicios, o por su intención de consumo, imponen distintos requerimientos que sumados a los técnicos desembocan en la contemplación de diversos riesgos y atributos de calidad.
-Aquí se presenta una planificación de las fases de elaboración y construcción de la metodología UP, asumiendo que la fase inception ya se ha desarrollado. En esta primera etapa se presentan las ideas para la formulación del proyecto Big Tiza, se establecen los requerimientos y recursos disponibles, y se lleva a cabo el QAW del cual se desprendieron algunos atributos de calidad esperados en el producto final. Como parte de la primera iteración, se identifican los casos de uso más relevantes y en base a la recopilación de toda esta información se realiza un análisis de riesgos que se utiliza en parte para la organización de los CU en las distintas iteraciones incrementales. Además se diseña la arquitectura del sistema.
+Aquí se presenta una planificación de las fases de elaboración, construcción y transición de la metodología UP, asumiendo que la fase inception ya se ha desarrollado. En esta primera etapa se presentan las ideas para la formulación del proyecto Big Tiza, se establecen los requerimientos y recursos disponibles, y se lleva a cabo el QAW del cual se desprendieron algunos atributos de calidad esperados en el producto final. Como parte de la primera iteración, se identifican los casos de uso más relevantes y en base a la recopilación de toda esta información se realiza un análisis de riesgos que se utiliza en parte para la organización de los CU en las distintas iteraciones incrementales. Además se diseña la arquitectura del sistema.
 
 \newpage
 
@@ -165,7 +165,7 @@ Para comenzar a trabajar sobre la planificación del proyecto se identificó un 
 \item \textbf{Comunicación}
 \begin{itemize}
 \item Enviando resultados de campañas a la NSA.
-\item Enviando mensajes de campañas por medios seleccionados\footnote{Facebook, Twitter, Whastapp, SMS.}.
+\item Enviando mensajes de campañas por medios seleccionados\footnote{Facebook, Twitter, Whatsapp o SMS.}.
 \item Respondiendo mensaje a una pregunta.
 \end{itemize}
 
@@ -187,7 +187,7 @@ Para comenzar a trabajar sobre la planificación del proyecto se identificó un 
 \item Creando, editando y eliminando grupos de destinatarios.
 \item Creando una campaña desde el sector público/privado.
 \item Desuscribiendo a un destinatario de una campaña.
-\item Reinscribiendo a un destinatario en una campaña de la que se desuscribió.
+%\item Reinscribiendo a un destinatario en una campaña de la que se desuscribió.
 \item Agregando evaluación manual del resultado de las preguntas.
 \item Aceptando campaña privada.
 \item Creando cuestionario de campañas de evaluación de campañas.
@@ -218,7 +218,7 @@ Para comenzar a trabajar sobre la planificación del proyecto se identificó un 
 \section{Planificación}
 
 \subsection{Iteraciones}
-La división de los CU en las distintas iteraciones y la organización de las mismas estuvo pautada por las necesidades manifestadas por los stakeholders y un incremento de funcionalidad, partiendo del núcleo más importante y revistiendo la aplicación a lo largo del tiempo de lógica menos prioritaria.
+La división de los CU en las distintas iteraciones y la organización de las mismas estuvo pautada por las necesidades manifestadas por los stakeholders, el análisis de riesgo y un incremento de funcionalidad, partiendo del núcleo más importante y revistiendo la aplicación a lo largo del tiempo de lógica menos prioritaria.
 
 \textbf{Primera iteración} [3 semanas]
 \begin{enumerate}
@@ -228,7 +228,7 @@ La división de los CU en las distintas iteraciones y la organización de las mi
 \item Autenticando usuario.
 \end{enumerate}
 
-\textbf{Segunda iteración} [3 semanas]
+\textbf{Segunda iteración} [5 semanas]
 \begin{enumerate}
 \item Creando, editando y eliminando usuarios.
 \item Consultando estado de una campaña.
@@ -236,7 +236,7 @@ La división de los CU en las distintas iteraciones y la organización de las mi
 \item Creando, editando y eliminando grupos de destinatarios.
 \end{enumerate}
 
-\textbf{Tercera iteración} [3 semanas]
+\textbf{Tercera iteración} [5 semanas]
 \begin{enumerate}
 \item Creando cuestionario de campañas de evaluación de campañas.
 \item Respondiendo mensaje a una pregunta.
@@ -244,14 +244,14 @@ La división de los CU en las distintas iteraciones y la organización de las mi
 \item Reinscribiendo a un destinatario en una campaña de la que se desuscribió.
 \end{enumerate}
 
-\textbf{Cuarta iteración} [2 semanas]
+\textbf{Cuarta iteración} [4 semanas]
 \begin{enumerate}
 \item Ingresando los resultados de una campaña.
 \item Pidiendo reportes de resultados de una campaña.
 \item Agregando evaluación manual del resultado de las preguntas.
 \end{enumerate}
 
-\textbf{Quinta iteración} [3 semanas]
+\textbf{Quinta iteración} [4 semanas]
 \begin{enumerate}
 \item Aceptando campaña privada.
 \item Reportando información anonimizada de grupos de destinatarios.
@@ -259,9 +259,9 @@ La división de los CU en las distintas iteraciones y la organización de las mi
 \item Enviando resultados de campañas a la NSA.
 \end{enumerate}
 
-\textbf{Sexta iteración} [2 semanas]
+\textbf{Sexta iteración} [4 semanas]
 \begin{enumerate}
-\item Supervisando campañas privadas (supervisar encuestas)?
+\item Supervisando campañas privadas (supervisar encuestas).
 \item Visualizando el mapa de evolución de las campañas.
 \item Agregando nuevo usuario proveedor de contenidos.
 \end{enumerate}
@@ -277,10 +277,6 @@ Llamamos datos a los registros en la base de datos que contienen información so
 \textbf{Creando una campaña desde el sector público/privado.}
 
 La creación de una campaña consiste en el ingreso de los datos necesarios para la creación de la misma, es decir, un conjunto de mensajes con el horario en el que deben ser enviados, un conjunto de grupos de destinatarios concernientes al objetivo de la campaña y el canal a través del que se enviarán (SMS, Facebook, etc).
-
-\textbf{Enviando mensajes de campañas por medios seleccionados.}
-
-Se envían los mensajes de cada campaña a sus destinatarios correspondientes en el momento indicado para cada mensaje. Además, dicho mensaje es enviado a través de los canales previamente seleccionados.
 
 \textbf{Enviando mensajes de campañas por medios seleccionados.}
 
