@@ -437,21 +437,14 @@ Los atributos de calidad principales que debe respetar el sistema a realizar, en
 Para describirlos, decidimos detallar escenarios correspondientes a cada uno de ellos:
 
 \subsection{Disponibilidad}
-\escenario{El sistema tiene que estar andando todo el tiempo, en todos los climas (no importa si llueve, si no hay internet, etc).}
+\escenario{El sistema debe ser capaz de soportar fallas de los distintos enlaces de comunicación.}
     {Interna.}
-    {Se quiere que el sistema esté disponible las 24hs del día en todo el país.}
-    {Operación normal.}
-    {Sistema.}
-    {El sistema se encuentra disponible la mayor cantidad del tiempo posible.}
-    {La probabilidad de que el sistema se caiga es del 0.01\%.}
+    {Se produce una falla en la conexión.}
+    {Operación degradada.}
+    {Conexiones del sistema.}
+    {Se cambia rápidamente a otro tipo de conexión.}
+    {Se tarda a lo sumo 10 minutos en cambiar a otro enlace de comunicación.}
 
-\escenario{Se quiere que distintas empresas puedan tener acceso rápidamente a los datos de evaluación para mejorar los perfiles de marketing.}
-    {Interna.}
-    {Una empresa desea acceder a los datos de evaluación.}
-    {Operación normal.}
-    {Sistema.}
-    {Las empresas pueden acceder con gran velocidad a los datos de evaluación.}
-    {Las empresas acceden a lo sumo en 60 segundos a los datos de evaluación de los usuarios.}
 
 \subsection{Modificabilidad}
 \escenario{Se quiere poder integrar todos los planes de salud a nivel nacional y provincial, y todo tipo plan de comunicación gubernamental.}
@@ -508,6 +501,14 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
     {Sistema.}
     {Se visualizan los datos de la campaña.}
     {El estado de una campaña se actualiza en menos de 10 segundos.}
+
+\escenario{Se quiere que distintas empresas puedan tener acceso rápidamente a los datos de evaluación para mejorar los perfiles de marketing.}
+    {Interna.}
+    {Una empresa desea acceder a los datos de evaluación.}
+    {Operación normal.}
+    {Sistema.}
+    {Las empresas pueden acceder con gran velocidad a los datos de evaluación.}
+    {Las empresas acceden a lo sumo en 60 segundos a los datos de evaluación de los usuarios.}
 
 \subsection{Usabilidad}
 
