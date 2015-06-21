@@ -414,7 +414,7 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
     {Hostear los servicios de reporte de estado de campañas utilizando la vasta infraestructura del dueño del sistema de abono de datos.}
     {Crear instancias adicionales de los servicios necesarios en caso de fallas o de sobrecarga de las instancias existentes.}
 
-\subsection{Plan de Proyecto}
+\section{Plan de Proyecto}
 En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada para el desarrollo de la primera iteración, tal como se detalló, comenzando por el caso de uso 4 y finalizando en el 1ero.
 
 \begin{figure}[h!]
@@ -423,4 +423,18 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
   \caption{Diagrama de Gantt de la 1era iteración con la asignación de tiempo}
   \label{fig:gantt}
 \end{figure}
+
+\section{Atributos de calidad}
+\subsection{Performance}
+\textit{Se debe poder monitorear el estado de las campañas de manera ágil. No se deben admitir demoras de ningún tipo.}
+\begin{itemize}
+  \item \textbf{Fuente:} Externa.
+  \item \textbf{Estimulo:} Un usuario desea ver el estado de una campaña.
+  \item \textbf{Entorno:} Operación normal.
+  \item \textbf{Artefacto:} Sistema.
+  \item \textbf{Respuesta:} Los datos de la campaña pueden verse rápidamente.
+  \item \textbf{Medición:} No se tarda más de 10 segundos en actualizar el estado de una campaña.
+\end{itemize}
+
+
 \end{document}
