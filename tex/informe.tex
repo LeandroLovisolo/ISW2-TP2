@@ -446,6 +446,14 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 
 \subsection{Seguridad}
 
+\escenario{Solo personal autorizado y sus delegados en cada provincia tengan acceso a definir las campañas, y evolución.}
+    {Externa.}
+    {Un usuario sin privilegios intenta acceder a datos sobre campañas o definir una.}
+    {Online.}
+    {Sistema.}
+    {Se utiliza un sistemas de privilegios y accesos el cuál tiene un bajo porcentaje de accesos sin autorización.}
+    {En las auditorías de seguridad, se obtiene acceso sin autorización menos del 3\% de las veces.}
+
 \escenario{Todos los datos que se manejarán son sensibles, y debe protegerse su acceso.}
     {Externa.}
     {Un usuario malintencionado intenta acceder a los datos guardados en las regiones.}
