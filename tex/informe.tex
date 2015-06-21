@@ -421,6 +421,49 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 \end{figure}
 
 \section{Atributos de calidad}
+\subsection{Disponibilidad}
+\textit{Se debe poder mantener la disponibilidad del servicio en la totalidad del país.}
+\begin{itemize}
+  \item \textbf{Fuente:} Interna.
+  \item \textbf{Estimulo:} Se deecta un fallo en la conexión de alguno de los nodos.
+  \item \textbf{Entorno:} Degradado.
+  \item \textbf{Artefacto:} Canal de comunicación.
+  \item \textbf{Respuesta:} Se terceariza la conexión a privados hasta que se soluciona el problema.
+  \item \textbf{Medición:} El tiempo de permanencia en modo degradado es menor a un mes.
+\end{itemize}
+
+\textit{Si ArSat tiene un problema entre los nodos de ANSES en los que distribuye sus servicios, existirán problemas para procesar la información almacenada.}
+\begin{itemize}
+  \item \textbf{Fuente:} Interna.
+  \item \textbf{Estimulo:} Se deecta un fallo en alguno de los nodos.
+  \item \textbf{Entorno:} Degradado.
+  \item \textbf{Artefacto:} Almacenamiento.
+  \item \textbf{Respuesta:} Se Utiliza el backup cifrado en la empresa terciarizada para solventar la falta de conexión. Además, se registran las acciones realizadas mientras el enlace está caido y se actualizan con la información fresca al arreglarse.
+  \item \textbf{Medición:} El tiempo de permanencia en modo degradado es menor a 10 días.
+\end{itemize}
+
+\subsection{Modificabilidad}
+\textit{El modelo de abono que contabiliza los mensajes enviados está pronto a migrar a mejores servidores.}
+\begin{itemize}
+  \item \textbf{Fuente:} Stakeholders.
+  \item \textbf{Estimulo:} Se migran los servidores.
+  \item \textbf{Entorno:} En ejecución.
+  \item \textbf{Artefacto:} El modelo de abono.
+  \item \textbf{Respuesta:} Se crea un sistema de respaldo para asegurar la comunicación.
+  \item \textbf{Medición:} Los servidores son migrados en menos de una semana.
+\end{itemize}
+
+\subsection{Seguridad}
+\textit{Un usuario malintencionado o un intruso utiliza una de las cuentas pertenecientes a los usuarios públicos para realizar acciones maliciosas a su favor.}
+\begin{itemize}
+  \item \textbf{Fuente:} Individuo externo al sistema.
+  \item \textbf{Estimulo:} Intenta acceder a datos sensibles.
+  \item \textbf{Entorno:} Online.
+  \item \textbf{Artefacto:} Datos del sistema.
+  \item \textbf{Respuesta:} Otorgar permisos y registrar toda actividad relacionada con el acceso a la información sensible. 
+  \item \textbf{Medición:} El acceso a la información por parte de personas no autorizadas es rechazado en el 99,5\% de las veces.
+\end{itemize}
+
 \subsection{Performance}
 \textit{Se debe poder monitorear el estado de las campañas de manera ágil. No se deben admitir demoras de ningún tipo.}
 \begin{itemize}
@@ -431,6 +474,7 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
   \item \textbf{Respuesta:} Se visualizan los datos de la campaña.
   \item \textbf{Medición:} El estado de una campaña se actualiza en menos de 10 segundos.
 \end{itemize}
+
 
 
 \end{document}
