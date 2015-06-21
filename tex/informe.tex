@@ -413,7 +413,7 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
     {Mantener un sistema de respaldo durante la migración del servicio para así poder asegurar la comunicación.}
     {Utilizar el sistema de respaldo para mantener la mayor correctitud posible los balances en el modelo de abonos a privados.}
 
-
+\newpage
 \section{Plan de Proyecto}
 En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada para el desarrollo de la primera iteración, tal como se detalló, comenzando por el caso de uso 4 y finalizando en el 1ero.
 
@@ -424,7 +424,23 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
   \label{fig:gantt}
 \end{figure}
 
+\newpage
 \section{Atributos de calidad}
+
+Los atributos de calidad principales que debe respetar el sistema a realizar, en orden de prioridad, son los que siguen:
+
+\begin{enumerate}
+\item Disponibilidad
+\item Performance
+\item Seguridad
+\item Certeza de Datos
+\item Modificabilidad
+\item Flexibilidad
+\item Usabilidad
+\end{enumerate}
+
+Para describirlos, decidimos detallar escenarios correspondientes a cada uno de ellos:
+
 \subsection{Disponibilidad}
 \escenario{El sistema tiene que estar andando todo el tiempo, en todos los climas (no importa si llueve, si no hay internet, etc).}
     {Interna.}
@@ -471,13 +487,13 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 
 \subsection{Seguridad}
 
-\escenario{Solo personal autorizado y sus delegados en cada provincia tengan acceso a definir las campañas, y evolución.}
+\escenario{Sólo personal autorizado y sus delegados en cada provincia tengan acceso a definir las campañas, y evolución.}
     {Externa.}
     {Un usuario sin privilegios intenta acceder a datos sobre campañas o definir una.}
     {Online.}
     {Sistema.}
-    {Se utiliza un sistemas de privilegios y accesos el cuál tiene un bajo porcentaje de accesos sin autorización.}
-    {En las auditorías de seguridad, se obtiene acceso sin autorización menos del 3\% de las veces.}
+    {Se utiliza un sistema de privilegios y accesos con un bajo porcentaje de accesos sin autorización.}
+    {En las auditorías de seguridad, se obtiene acceso sin autorización un menos del 3\% de las veces.}
 
 \escenario{Todos los datos que se manejarán son sensibles, y debe protegerse su acceso.}
     {Externa.}
@@ -509,6 +525,17 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
     {Los usuarios tardan menos de 30 minutos en aprender a crear campañas en el sistema.}
 
 
+\newpage
+\section{Justificación de la arquitectura}
+Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. 	
 
+La arquitectura utilizada fue la siguiente:
+
+
+\newpage
+\section{Arquitectura TP1}
+
+\newpage
+\section{Comparación y conclusiones}
 
 \end{document}
