@@ -84,7 +84,7 @@
   \textit{{#1}}
   \begin{itemize}
     \item \textbf{Fuente:} {#2}
-    \item \textbf{Estimulo:} {#3}
+    \item \textbf{Estímulo:} {#3}
     \item \textbf{Entorno:} {#4}
     \item \textbf{Artefacto:} {#5}
     \item \textbf{Respuesta:} {#6}
@@ -426,8 +426,32 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 
 \section{Atributos de calidad}
 \subsection{Disponibilidad}
+\escenario{El sistema tiene que estar andando todo el tiempo, en todos los climas (no importa si llueve, si no hay internet, etc).}
+    {Interna.}
+    {Se quiere que el sistema esté disponible las 24hs del día en todo el país.}
+    {Operación normal.}
+    {Sistema.}
+    {El sistema se encuentra disponible la mayor cantidad del tiempo posible.}
+    {La probabilidad de que el sistema se caiga es del 0.01\%.}
 
 \subsection{Modificabilidad}
+\escenario{Se quiere poder integrar todos los planes de salud a nivel nacional y provincial, y todo tipo plan de comunicación gubernamental.}
+    {Interna.}
+    {Se desea extender el sistema.}
+    {Operación normal.}
+    {Sistema.}
+    {El sistema es modificable en el menor tiempo posible.}
+    {La extensión planteada no toma más de 8hs hombre modificando módulos relacionados.}
+
+
+\subsection{Certeza de datos}
+\escenario{Como el otorgamiento de información precisa en tiempo real es imposible (aún con el equipo necesario), se debe proveer datos estimados.}
+    {Interna.}
+    {Un usuario desea ver la evolución de una campaña.}
+    {Operación normal.}
+    {Sistema.}
+    {Se presentan datos estimados de la campaña, lo más precisos posibles.}
+    {Los datos presentados tienen una precisión del 98\% respecto del análisis en tiempo real.}
 
 \subsection{Seguridad}
 
