@@ -390,12 +390,12 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 \section{Análisis de riesgos}
 
 \riesgo{1}
-	{Mantener la disponibilidad del servicio en la totalidad del país es importante. Sin embargo, se conoce que la disponibilidad del servicio puede tener dificultades en algunas zonas, como por ejemplo la patagonia.}
-	{Media}
-	{Alto}
-	{Alta}
-	{Mantener un sistema que permita verificar la conexión de los distintos nodos que se encuentran en distintas regiones del país}
-	{Al reportarse un fallo en la conexión, tercerizar la conexión a privados hasta que se arregle el problema}
+    {Mantener la disponibilidad del servicio en la totalidad del país es importante. Sin embargo, se conoce que la disponibilidad del servicio puede tener dificultades en algunas zonas, como por ejemplo la patagonia.}
+    {Alta}
+    {Alto}
+    {Alta}
+    {Mantener un sistema que permita verificar la conexión de los distintos nodos que se encuentran en distintas regiones del país}
+    {Al reportarse un fallo en la conexión, tercerizar la conexión a privados hasta que se arregle el problema}
 
 \riesgo{2}
     {ArSat nos provee actualmente conexión y procesamiento en la región de Córdoba. Si ArSat tiene un problema entre los nodos de ANSES en los que distribuye sus servicios, existirán problemas para procesar la información almacenada.}
@@ -413,21 +413,6 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
     {Mantener un sistema de respaldo durante la migración del servicio para así poder asegurar la comunicación.}
     {Utilizar el sistema de respaldo para mantener la mayor correctitud posible los balances en el modelo de abonos a privados.}
 
-\riesgo{4}
-    {Un usuario malintencionado o un intruso utiliza una de las cuentas pertenecientes a los usuarios públicos para realizar acciones maliciosas a su favor}
-    {Media}
-    {Medio}
-    {Media}
-    {Mantener en cada región un reporte de las acciones que realizan sus usuarios, contratar un servicio de atención para gestionar denuncias de mal uso e implementar el protocolo de 2nd step verification para brindar seguridad de acceso.}
-    {Utilizar los reportes de actividad de los usuarios para revertir los cambios hechos.}
-
-\riesgo{5}
-    {Se debe poder monitorear el estado de las campañas de manera ágil. No se deben admitir demoras de ningún tipo.}
-    {Media}
-    {Alto}
-    {Media}
-    {Hostear los servicios de reporte de estado de campañas utilizando la vasta infraestructura del dueño del sistema de abono de datos.}
-    {Crear instancias adicionales de los servicios necesarios en caso de fallas o de sobrecarga de las instancias existentes.}
 
 \section{Plan de Proyecto}
 En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada para el desarrollo de la primera iteración, tal como se detalló, comenzando por el caso de uso 4 y finalizando en el 1ero.
