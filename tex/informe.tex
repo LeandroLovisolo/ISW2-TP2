@@ -499,7 +499,6 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
     {Se utilizan cifrados para los datos almacenados que tardarían un tiempo alto en decodificarse sin las claves correspondientes.}
     {Se tarda más de 10 mil años en realizar la decodificación sin claves.}
 
-
 \subsection{Performance}
 
 \escenario{Se debe poder monitorear el estado de las campañas de manera ágil. No se deben admitir demoras de ningún tipo.}
@@ -533,8 +532,19 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
 \section{Justificación de la arquitectura}
 Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. 	
 
-La arquitectura utilizada fue la siguiente:
+En lo que sigue, explicamos la arquitectura realizada:
 
+\begin{itemize}
+
+\item Utilizamos un repositorio de campañas para el almacenamiento cifrado de los datos y otro para el almacenamiento de campañas (los mensajes de cada una de éstas).
+
+\item Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contraseñas de los mismos.
+
+\item El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
+
+\item El selector de conexión (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
+
+\end{itemize}
 
 \newpage
 \section{Arquitectura TP1}
