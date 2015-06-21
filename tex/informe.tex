@@ -446,6 +446,15 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 
 \subsection{Seguridad}
 
+\escenario{Todos los datos que se manejarán son sensibles, y debe protegerse su acceso.}
+    {Externa.}
+    {Un usuario malintencionado intenta acceder a los datos guardados en las regiones.}
+    {Online.}
+    {Sistema.}
+    {Se utilizan cifrados para los datos almacenados que tardarían un tiempo alto en decodificarse sin las claves correspondientes.}
+    {Se tarda más de 10 mil años en realizar la decodificación sin claves.}
+
+
 \subsection{Performance}
 
 \escenario{Se debe poder monitorear el estado de las campañas de manera ágil. No se deben admitir demoras de ningún tipo.}
