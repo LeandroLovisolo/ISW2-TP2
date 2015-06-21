@@ -475,6 +475,14 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
 
 \subsection{Seguridad}
 
+\escenario{Quiere asegurar confidencialidad de todos los datos involucrados.}
+    {Externa.}
+    {Un individuo malintencionado intenta interferir los mensajes que se envían entre enlaces.}
+    {Online.}
+    {Sistema.}
+    {Se utilizan cifrados para los mensajes los cuales tardarían un tiempo alto en romperse sin las claves correspondientes.}
+    {Se tarda más de 10 mil años en realizar la decodificación sin claves.}
+
 \escenario{Sólo personal autorizado y sus delegados en cada provincia tengan acceso a definir las campañas, y evolución.}
     {Externa.}
     {Un usuario sin privilegios intenta acceder a datos sobre campañas o definir una.}
@@ -485,7 +493,7 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
 
 \escenario{Todos los datos que se manejarán son sensibles, y debe protegerse su acceso.}
     {Externa.}
-    {Un usuario malintencionado intenta acceder a los datos guardados en las regiones.}
+    {Un individuo malintencionado intenta acceder a los datos guardados en las regiones o en el sistema de abono de datos.}
     {Online.}
     {Sistema.}
     {Se utilizan cifrados para los datos almacenados que tardarían un tiempo alto en decodificarse sin las claves correspondientes.}
