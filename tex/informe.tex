@@ -164,7 +164,6 @@ Para comenzar a trabajar sobre la planificación del proyecto se identificó un 
 
 \item \textbf{Comunicación}
 \begin{itemize}
-\item Enviando resultados de campañas a la NSA.
 \item Enviando mensajes de campañas por medios seleccionados\footnote{Facebook, Twitter, Whatsapp o SMS.}.
 \item Respondiendo mensaje a una pregunta.
 \end{itemize}
@@ -220,6 +219,14 @@ Para comenzar a trabajar sobre la planificación del proyecto se identificó un 
 \subsection{Iteraciones}
 La división de los CU en las distintas iteraciones y la organización de las mismas estuvo pautada por las necesidades manifestadas por los stakeholders, el análisis de riesgo y un incremento de funcionalidad, partiendo del núcleo más importante y revistiendo la aplicación a lo largo del tiempo de lógica menos prioritaria.
 
+\begin{center}
+\textbf{Fase de iniciación}
+\end{center}
+Consideramos fase de iniciación al trabajo realizado en el Primer Trabajo Práctico junto con la Arquitectura presente en este TP.
+
+\begin{center}
+\textbf{Fase de elaboración}
+\end{center}
 \textbf{Primera iteración} [3 semanas]
 \begin{enumerate}
 \item Guardando datos cifrados en servidores locales.
@@ -289,12 +296,12 @@ Se solicita un usuario y contraseña cuando una persona intenta iniciar una sesi
 El sistema verifica que las credenciales ingresadas sean válidas, y en caso contrario deniega el acceso al mismo.
 
 \subsection{Tareas CU Primera iteración}
-A continuación se detallan las tareas diagramadas para los casos de uso incluidos en la primera iteración con su respectiva estimación de horas.
+A continuación se detallan las tareas diagramadas para los casos de uso incluidos en la primera iteración con su respectiva estimación de horas hombre.
 \\
 
 \begin{tabular}{lp{13cm}l}
   \hline
-  CU1 & Guardando datos cifrados en servidores locales & 50h \\
+  CU1 & Guardando datos cifrados en servidores locales & 35h \\
   \hline \\
   T01 & Investigación de fuentes de información disponibles de cada usuario accesible desde el sistema & 4h \\
   T02 & Definición de campos relevantes para almacenar por usuario & 3h \\
@@ -302,29 +309,29 @@ A continuación se detallan las tareas diagramadas para los casos de uso incluid
   T04 & Definición de motor de búsqueda a utilizar & 2h \\
   T05 & Definición de método de encriptación & 2h \\
   T06 & Implementación de CU1 & 10h\\
-  T07 & Testing de CU1 & 5h \\
+  T07 & Testing de CU1 & 10h \\
   \hline
 \end{tabular}
 
 \begin{tabular}{lp{13cm}l}
   \hline
-  CU2 & Creando una campaña desde el sector público/privado & 13h \\
+  CU2 & Creando una campaña desde el sector público/privado & 15h \\
   \hline \\
-  T01 & Investigar librerías y herramientas  & 5h \\
+  T01 & Investigar librerías y herramientas para la implementación de las campañas & 5h \\
   T02 & Diseño de la interfaz del usuario & 2h \\
   T03 & Implementación de CU2 & 4h \\
-  T04 & Testing de CU2 & 2h \\
+  T04 & Testing de CU2 & 4h \\
   \hline
 \end{tabular}
 
 \begin{tabular}{lp{13cm}l}
   \hline
-  CU3 &  Enviando mensajes de campañas por medios seleccionados & 23h \\
+  CU3 &  Enviando mensajes de campañas por medios seleccionados & 40h \\
   \hline \\
-  T01 & Investigación de los distintos medios de envío de mensajes & 8h \\
-  T02 & Diseño de un servicio EmisorDeMensajes, que en intervalos de tiempo regulares envíe los mensajes programados & 6h \\
-  T03 & Implementación de CU3 & 6h \\
-  T04 & Testing de CU3 & 3h \\
+  T01 & Investigación de los distintos medios de envío de mensajes & 10h \\
+  T02 & Diseño de un servicio EmisorDeMensajes, que en intervalos de tiempo regulares envíe los mensajes programados & 10h \\
+  T03 & Implementación de CU3 & 10h \\
+  T04 & Testing de CU3 & 10h \\
   \hline
 \end{tabular}
 
@@ -343,7 +350,7 @@ A continuación se detallan las tareas diagramadas para los casos de uso incluid
 \begin{itemize}
   \item \textbf{Identificación:} E1
   \item \textbf{Tipo de iteración:} Elaboración
-  \item \textbf{Cantidad total de horas:} 125
+  \item \textbf{Cantidad total de horas:} 120
   \item \textbf{Tareas:}
 \begin{enumerate}
   \item Refinamiento de objetivos y requerimientos (2h)
@@ -353,10 +360,10 @@ A continuación se detallan las tareas diagramadas para los casos de uso incluid
   \item Estimación de tiempos de CU (1h)
   \item Análisis de escenarios y atributos de calidad del sistema (2h)
   \item Diseño de arquitectura (8h)
-  \item Realización de tareas de CU1 (30h)
-  \item Realización de tareas de CU2 (13h)
-  \item Realización de tareas de CU3 (23h)
-  \item Realización de tareas de CU4 (40h)
+  \item Realización de tareas de CU1 (35h)
+  \item Realización de tareas de CU2 (15h)
+  \item Realización de tareas de CU3 (40h)
+  \item Realización de tareas de CU4 (4h)
 \end{enumerate}
 \end{itemize}
 
