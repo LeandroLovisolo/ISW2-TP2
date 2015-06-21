@@ -403,12 +403,12 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
     {Al reportarse un fallo en la conexión, tercerizar la conexión a privados hasta que se arregle el problema}
 
 \riesgo{2}
-    {ArSat nos provee actualmente conexión y procesamiento en la región de Córdoba. Si ArSat tiene un problema entre los nodos de ANSES en los que distribuye sus servicios, existirán problemas para procesar la información almacenada.}
+    {ArSat nos provee actualmente conexión y procesamiento en la región de Córdoba. Si se encuentra un problema en los nodos de ANSES, existirán problemas para procesar la información almacenada.}
     {Media}
     {Medio}
     {Medio}
     {Realizar backups de los nodos regionales con cierta frecuencia y almacenarlos de forma cifrada en una empresa tercerizada; controlar el estado de los nodos dentro de las regiones}
-    {Utilizar el backup cifrado en la empresa para solventar la falta de conexión mientras se arregla. Registrar las acciones realizadas mientras el enlace está caido y actualizarlas con la información fresca al arreglarse el enlace.}
+    {Utilizar el backup cifrado en la empresa para solventar la baja del servidor mientras se arregla. Registrar las acciones realizadas mientras el nodo está caído y actualizarlas con la información fresca al arreglarse.}
 
 \riesgo{3}
     {El modelo de abono que contabiliza los mensajes enviados está por migrar pronto a mejores servidores, por lo que se esperan algunas fallas de comunicación durante la transición.}
