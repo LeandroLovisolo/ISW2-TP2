@@ -478,6 +478,7 @@ Cada escenario está planteado en base al QAW y a los requerimientos o peticione
     {Cada intento de creación de campaña es exitoso bajo operación normal.}
 
 \subsection{Modificabilidad}
+\label{modificabilidad:atr1}
 \escenario{Y pensar en ampliar los canales de comunicación además del SMS sumar Twitter, Whatsapp, Facebook Messenger, etc.}
     {Interna.}
     {Se desea extender el sistema.}
@@ -558,8 +559,7 @@ Cada escenario está planteado en base al QAW y a los requerimientos o peticione
 En lo que sigue, presentamos la arquitectura del trabajo con vista de Componentes y Conectores. Para la realización de la misma, utilizamos conectores creados específicamente para nuestras necesidades. Éstos son:
 
 \begin{figure}[h!]
-\centering
-  \diagrama{./diagramas/referenciadeconectores.pdf}
+  \diagramadeancho{12cm}{./diagramas/referenciadeconectores.pdf}
   \caption{Referencia de los conectores creados.}
 \end{figure}
 
@@ -622,8 +622,6 @@ Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contr
 
 El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
 
-Se cuenta con un componente \textit{Emisor de mensajes}. Éste, a su vez, cuenta internamente con un componente \textit{Notificador de mensajes a enviar}, que consulta periódicamente al \textit{Repositorio de campañas} auxiliado del \textit{System timer} para decidir los mensajes que requieren ser enviados, y decide los destinatarios de los mismos consultando al \textit{Repositorio de grupos de personas}. El envío de los mensajes se realiza publicando los mismos en un bus publish/subscribe, al que subscriben tres comonentes: \textit{Emisor de mensajes via email}, \textit{Emisor de mensajes via Whatsapp} y \textit{Emisor de mensajes via SMS}. Éstos finalmente delegan al servicio externo correspondiente para efectuar el envío de los mensajes. Se utiliza un bus publish/subscribe para permitir fácilmente y con impacto mímimo la incorporación de nuevos emisores para nuevos canales de envío en el futuro.
-
 De manera análoga, se cuenta con un componente \textit{Receptor de mensajes}. Éste también posee un bus publish/subscribe con tres componentes de recepción de mensajes vía SMS, Whatsapp y email que se comunican con los servicios externos correspondientes y publican los mensajes en el bus a medida que llegan. Un componente \textit{Director de mensajes} se subscribe a los mismos, y se comunica con el \textit{Actualizador de datos de evaluación de campañas} enviando las actualizaciónes correspondientes. La motivación del bus publish/subscribe también es permitir la facilidad de cambio a la hora de agregar nuevos canales de envío y recepción de mensajes.
 
 El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
@@ -649,8 +647,13 @@ Pendiente.
 
 \subsubsection{Emisor de mensajes}
 
-Pendiente.
+El componente \textit{Emisor de mensajes} cuenta con los siguientes componentes:
 
+\begin{itemize}
+  \item Un \textit{Notificador de mensajes a enviar}, que consulta periódicamente al \textit{Repositorio de campañas} auxiliado del \textit{System timer} para decidir los mensajes que requieren ser enviados, y decide los destinatarios de los mismos consultando al \textit{Repositorio de grupos de personas}. Una vez conocidos los mensajes y los destinatarios, se publican los mismos en el bus publish/subscribe anterior.
+
+  \item Un bus publish/subscribe, al que subscriben tres componentes: \textit{Emisor de mensajes via email}, \textit{Emisor de mensajes via Whatsapp} y \textit{Emisor de mensajes via SMS}. Éstos toman los mensajes que les corresponden del bus para efectuar el envío de los mensajes mediante los distintos servicios externos. Se utiliza un bus publish/subscribe para permitir fácilmente y con impacto mímimo la incorporación de nuevos emisores para nuevos canales de envío en el futuro, satisfaciendo el atributo de modificabilidad planteado anteriormente en \ref{modificabilidad:atr1}.
+\end{itemize}
 
 \subsubsection{Actuador web}
 
