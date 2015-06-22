@@ -751,7 +751,10 @@ A grandes rasgos, la apariencia de ambas arquitecturas es similar; hay repositor
 
 Dado que el sistema del TP1 funciona en una única computadora, no nos pareció necesaria la utilización de paralelismo. En cambio, los nodos regionales deben atender múltiples pedidos simultáneamente y procesar datos e información a una velocidad razonable, por lo que se necesita concurrencia de los módulos. 
 
-Por otro lado, en el TP2 debimos asegurar seguridad de los datos, por lo que los conectores son cifrados.
+Por otro lado, en el TP2 debimos asegurar seguridad de los datos, por lo que los conectores y los repositorios que se encuentran dentro de cada nodo están cifrados.
+
+Como el sistema del TP2 está pensado para funcionar a nivel nacional, tuvimos que tener en cuenta detalles como la disponibilidad de conexión. Para esto, armamos un plan de respaldo en el caso de que la comunicación entre los distintos nodos se llegase a perder. En cambio, el sistema del TP1 no contempla esto dado que es un sistema muy pequeño que funciona en una computadora.
+ 
 \begin{comment}
 
 De un modo similar en la comunicación con la interfaz meteorológica evitábamos tener que localizar el lugar de origen de los datos, y nos ahorramos
