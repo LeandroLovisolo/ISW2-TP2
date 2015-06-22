@@ -552,11 +552,29 @@ En lo que sigue, explicamos la arquitectura realizada:
 
 \item El selector de conexión (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
 
+\item El actuador recibe las peticiones web y las atiende.
+
 \end{itemize}
 
 \newpage
 \section{Arquitectura TP1}
 
+Para la arquitectura del TP1, nos basamos en el diagrama de clases realizado considerando las decisiones tomadas a lo largo de la elaboración del mismo.
+
+\begin{itemize}
+\item El \textit{Servidor web} representa a la interfaz que se le muestra al usuario cuando desea ingresar al sistema.
+\item El \textit{Receptor de peticiones web} se encarga del manejo de los pedidos realizados por los usuarios. Éstas pueden incluir información sobre las mediciones de eficacia, sobre el estado de las campañas, agregado o supresión de mensajes, etc.
+\item El \textit{Autenticador} verifica el usuario y la contraseña ingresados por el usuario para otorgarle los permisos que le corresponden.
+\item El \textit{Autenticador} recibe la información del \textit{Repositorio de credenciales}, quien almacena la información de los directivos y maestros.
+\item El \textit{Repositorio de mensajes} almacena los mensajes de las campañas. Funciona como repositorio (cuando un mensaje debe ser enviado al emisor de mensajes) y como blackboard (cuando un usuario agrega un nuevo mensaje).
+\item El \textit{Repositorio de eventos} tiene guardados los eventos de las campañas y tiene el mismo rol que el repositorio de mensajes.
+\item El \textit{Emisor de mensajes} es el encargado de transmitir los mensajes en tiempo y hora junto con los destinatarios de los mismos al \textit{Servicio de SMS} para que éste los envíe.
+\item Para la realización de esto último, el \textit{Repositorio de alumnos} (que incluye a los padres de los mismos) le provee los datos necesarios al \textit{Emisor de mensajes} para que se les envíe a los alumnos correspondientes.
+\end{itemize}
+
+El diagrama resultante es el siguiente:
+
+\grafico{./diagramas/arquitecturaTP1.png}
 \newpage
 \section{Comparación y conclusiones}
 
