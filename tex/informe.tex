@@ -743,27 +743,6 @@ Por otro lado, en el TP2 debimos asegurar seguridad de los datos, por lo que los
 
 Como el sistema del TP2 está pensado para funcionar a nivel nacional, tuvimos que tener en cuenta detalles como la disponibilidad de conexión. Para esto, armamos un plan de respaldo en el caso de que la comunicación entre los distintos nodos se llegase a perder. Dicho plan contempla la posibilidad de usar servicios provistos por terceros. En cambio, el sistema del TP1 no contempla esto dado que es un sistema muy pequeño que funciona en una computadora.
 
-\begin{comment}
-
-De un modo similar en la comunicación con la interfaz meteorológica evitábamos tener que localizar el lugar de origen de los datos, y nos ahorramos
-los componentes específicos para analizar los datos. 
-
-Por otro lado, al haber menor necesidad de guardar información a lo largo del tiempo, hacían falta menos repositorios distribuidos a lo largo de la arquitectura.
-El único repositorio de la arquitectura actual que viene de la arquitectura del TP anterior es el de Plan(es) Maestro(s), un concepto que sobrevive todo cambio de
-arquitecturas por su importancia en el dominio.
-Muchos de los repositorios nuevos que se agregaron tienen que ver con el gran flujo de datos y eventos y la imposibilidad de responder a todos ellos en tiempo real,
-algo que en el TP1 no ocurría.
-
-En general vemos que la sucesión de colaboraciones desde la llegada de nueva información hasta el accionar (o no) de los actuadores 
-era mucho más simple y corta en el TP1 que en el 2do, presentando componentes con responsabilidades más generales, como los ``Supervisores'' que combina responsabilidades
-de que en el TP2 aparecen distribuidas entre la comunicación con los sensores, el analizador de los datos, almacenador, controlador de estadios, planificador, etc.
-
-Sin embargo, si bien las diferencias son variadas y profundas, observamos cierta similitud general entre los diagramas. Algo que podríamos llamar la ``esencia'' de la 
-arquitectura permaneció intacto de un TP a otro (aunque casi imposible de visualizar al ojo no entrenado en el dominio del problema). Dicho en términos de la materia,
-ambas arquitecturas presentan un estilo similar: existen sensores, el sistema les pide información a esos sensores, la procesa y en función del resultado y de 
-lógicas preestablecidas que consulta a partir de repositorios toma decisiones que envía a un conjunto de actuadores que intervienen en el medio de la(s) planta(s).
-\end{comment}
-
 \newpage
 
 
@@ -774,4 +753,11 @@ lógicas preestablecidas que consulta a partir de repositorios toma decisiones q
 
 \section{Conclusiones}
 
+A modo de conclusión, podemos determinar que, considerando el desarrollo realizado a lo largo de ambos tps, no realizar una comparación estricta entre el Scrum y el UP. Esto se debe a que con Scrum realizamos una única iteración y con UP no desarrollamos nada específico.
+
+Sin embargo, podemos establecer una comparación entre las etapas iniciales de realizar una planificación y un diseño antes de la implementación del sistema, y comenzarla sin planificación alguna, diseñando incrementalmente.
+
+Principalmente, descubrimos que el orden de importancia de los atributos de calidad es el principal dirigente en lo que concierne las decisiones arquitectónicas. En nuestro caso, tuvimos que priorizar la disponibilidad, por lo que el sistema debió verse afectado por distintos métodos capaces de asegurar la supervivencia del sistema más allá de las caídas.
+
+Por otro lado, nos pareció importante la organización de tiempos y responsabilidades a través de un diagrama de Gantt para lograr precisión en la estimación de creación de un sistema. Notamos que un error en la estimación de esfuerzo en Scrum no presenta grandes problemas en comparación con las que tendría el mismo error (de estimación de horas/hombre) en UP. En el peor caso, en Scrum una historia quedará afuera de una iteración y tendrá que ser subdividida más adelante, en cambio, en UP se puede producir un efecto dominó que afecta todas las iteraciones posteriores y retrasar todo el proyecto.
 \end{document}
