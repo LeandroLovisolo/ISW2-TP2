@@ -665,7 +665,11 @@ El componente \textit{Emisor de mensajes} cuenta con los siguientes componentes:
 
 \subsubsection{Actuador web}
 
-Pendiente.
+\begin{itemize}
+\item El Receptor de mensajes web se encarga de aceptar los mensajes provenientes de la interfaz web. El mismo cataloga a qué componente le corresponde atender el mensaje recibido.
+\item El Administrador de grupos de personas se encarga de seleccionar a las personas afectadas por la petición recibida. El mismo busca los usuarios necesarios en el Repositorio de grupos de personas, que se encuentran previamente fraccionados por distintos criterios (por ejemplo: fumador, no fumador).
+\item El Receptor de mensajes heartbeat se encarga de recibir las señales heartbeat de los distintos nodos pertenecientes al sistema. En el caso en el que alguno de ellos no fuera recibido, se envía la notificación al Servicio mail. Por lo tanto, el Receptor de mensajes es también el encargado de verificar que todos los nodos hayan enviado su señal heartbeat.
+\end{itemize}
 
 \subsubsection{Conector selector}
 
