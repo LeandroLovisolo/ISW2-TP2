@@ -612,28 +612,16 @@ En lo que sigue, presentamos la arquitectura del trabajo con vista de Componente
 
 \subsection{Justificación de la arquitectura}
 
-Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}. En lo que sigue, explicamos la arquitectura realizada.
+Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. 
 
-En primer lugar, decidimos representar la interfaz a la que accede un usuario con un \textit{Servidor web}. Éste se encarga únicamente de servir la interfaz de usuario, y delega al \textit{Actuador web} la realización de cualquier operación que solicite el usuario por medio de la interfaz web.
+Elegimos un estilo de arquitectura distribuida, es decir, no existe un sistema centralizado, existen nodos regionales los cuales resuelven las necesidades a nivel sistema de cada región y se comunican con los demás nodos para obtener información de ellos. Esta elección se hace en pos de facilitar la escalabilidad. Agregar un nuevo nodo no tiene un gran impacto en los demás. 
 
-Utilizamos un repositorio de campañas para el almacenamiento cifrado de los datos y otro para el almacenamiento de campañas (los mensajes de cada una de éstas).
-
-Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contraseñas de los mismos.
-
-El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
-
-
-
-El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
-
-El \textit{Actuador} recibe las peticiones web y las atiende.
-
-
+En lo que sigue, explicamos la arquitectura realizada.
 
 \subsubsection{Nodo regional}
 
 \begin{itemize}
-  \item El \textit{servidor web} sirve la interfaz y atiende pedidos de operaciones, que son delegadas al \textit{actuador web}.
+  \item El \textit{servidor web} sirve la interfaz de usuario y atiende pedidos de operaciones, que son delegadas al \textit{actuador web}.
 
   \item El \textit{actuador web} se encarga de responder todas las operaciones solicitadas por la interfaz. Para esto delega muchas responsabilidades a otros componentes y repositorios del nodo regional. Además es quien se encarga de interactuar con otros nodos regionales, comunicándose con sus respectivos actuadores web.
 
@@ -665,7 +653,7 @@ El \textit{Actuador} recibe las peticiones web y las atiende.
 
 \subsubsection{Receptor de mensajes}
 
-A grandes razgos, el componente \textit{Receptor de mensajes} tiene la responsabilidad de recibir los mensajes entrantes correspondientes a las respuestas de las preguntas realizadas para la evaluación de las campañas.
+A grandes rasgos, el componente \textit{Receptor de mensajes} tiene la responsabilidad de recibir los mensajes entrantes correspondientes a las respuestas de las preguntas realizadas para la evaluación de las campañas.
 
 El componente cuenta con la siguiente estructura:
 
