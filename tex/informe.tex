@@ -610,11 +610,9 @@ En lo que sigue, presentamos la arquitectura del trabajo con vista de Componente
 
 \subsection{Justificación de la arquitectura}
 
-Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}.	
+Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}. En lo que sigue, explicamos la arquitectura realizada.
 
-En lo que sigue, explicamos la arquitectura realizada:
-
-En primer lugar, decidimos representar la interfaz a la que accede un usuario con un \textit{Servidor web}. El mismo se encarga de notificarle al \textit{Actuador web} la tarea requerida por el usuario.
+En primer lugar, decidimos representar la interfaz a la que accede un usuario con un \textit{Servidor web}. Éste se encarga únicamente de servir la interfaz de usuario, y delega al \textit{Actuador web} la realización de cualquier operación que solicite el usuario por medio de la interfaz web.
 
 Utilizamos un repositorio de campañas para el almacenamiento cifrado de los datos y otro para el almacenamiento de campañas (los mensajes de cada una de éstas).
 
@@ -632,9 +630,15 @@ El \textit{Actuador} recibe las peticiones web y las atiende.
 
 \newpage
 
-\section{Arquitectura TP1}
 
-Para la arquitectura del TP1, nos basamos en el diagrama de clases realizado considerando las decisiones tomadas a lo largo de la elaboración del mismo.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Arquitectura del TP 1                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Arquitectura del TP 1}
+
+Para la arquitectura del TP 1, nos basamos en el diagrama de clases realizado considerando las decisiones tomadas a lo largo de la elaboración del mismo.
 
 \begin{itemize}
 \item El \textit{Servidor web} representa a la interfaz que se le muestra al usuario cuando desea ingresar al sistema.
@@ -650,10 +654,19 @@ Para la arquitectura del TP1, nos basamos en el diagrama de clases realizado con
 El diagrama resultante es el siguiente:
 
 \diagrama{./diagramas/arquitecturaTP1.png}
+
 \newpage
 
-\section{Comparación}
-Como primer diferencia entre las arquitecturas del TP1 y TP2, podemos observar un importante incremento en la complejidad de las mismas al pasar de un sistema de un único servidor en una escuela a uno de gran escala capaz de soportar diferentes tipos de mensajes y distribuido en diferentes lugares del país.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comparación entre arquitecturas de TPs 1 y 2                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Comparación entre arquitecturas de TPs 1 y 2}
+
+Como primer diferencia entre las arquitecturas del TP 1 y TP 2, podemos observar un importante incremento en la complejidad de las mismas al pasar de un sistema de un único servidor en una escuela a uno de gran escala capaz de soportar diferentes tipos de mensajes y distribuido en diferentes lugares del país.
+
 \begin{comment}
 En primer lugar observamos que al tener mensajes de directos sensores en la tierra no necesitábamos drones para tomar fotos ni componentes para analizar imágenes,
 la información sobre el suelo era accesible directamente.
@@ -676,7 +689,15 @@ arquitectura permaneció intacto de un TP a otro (aunque casi imposible de visua
 ambas arquitecturas presentan un estilo similar: existen sensores, el sistema les pide información a esos sensores, la procesa y en función del resultado y de 
 lógicas preestablecidas que consulta a partir de repositorios toma decisiones que envía a un conjunto de actuadores que intervienen en el medio de la(s) planta(s).
 \end{comment}
+
 \newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Conclusiones                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \section{Conclusiones}
 Desde el punto de vista del desarrollo tenemos pocas herramientas para comparar los métodos usados a lo largo de la materia (Scrum y UP),
 dado que trabajando con Scrum realizamos una única iteración y trabajando con UP ni siquiera llegamos a desarrollar nada efectivamente.
