@@ -622,7 +622,7 @@ Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contr
 
 El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
 
-De manera análoga, se cuenta con un componente \textit{Receptor de mensajes}. Éste también posee un bus publish/subscribe con tres componentes de recepción de mensajes vía SMS, Whatsapp y email que se comunican con los servicios externos correspondientes y publican los mensajes en el bus a medida que llegan. Un componente \textit{Director de mensajes} se subscribe a los mismos, y se comunica con el \textit{Actualizador de datos de evaluación de campañas} enviando las actualizaciónes correspondientes. La motivación del bus publish/subscribe también es permitir la facilidad de cambio a la hora de agregar nuevos canales de envío y recepción de mensajes.
+
 
 El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
 
@@ -642,8 +642,16 @@ El \textit{Actuador} recibe las peticiones web y las atiende.
 
 \subsubsection{Receptor de mensajes}
 
-Pendiente.
+A grandes razgos, el componente \textit{Receptor de mensajes} tiene la responsabilidad de recibir los mensajes entrantes correspondientes a las respuestas de las preguntas realizadas para la evaluación de las campañas.
 
+El componente cuenta con la siguiente estructura:
+
+\begin{itemize}
+  \item Un bus publish/subscribe con tres componentes de recepción de mensajes vía SMS, Whatsapp y email que se comunican con los servicios externos correspondientes y publican los mensajes en el bus a medida que llegan. La motivación del bus publish/subscribe también es permitir la facilidad de cambio a la hora de agregar nuevos canales de envío y recepción de mensajes, cumpliendo con el atributo de modificabilidad mencionado en \ref{modificabilidad:atr1}.
+
+  \item Un componente \textit{Director de mensajes} el cual se subscribe a al bus descripto para recibir los mensajes o respuestas recibidas de distintos medios. Este componente procesa las respuestas para que el \textit{Actualizador de datos de evaluación de campañas} pueda consumirlas, pudiendo posteriormente realizar las actualizaciónes correspondientes.
+
+\end{itemize}
 
 \subsubsection{Emisor de mensajes}
 
