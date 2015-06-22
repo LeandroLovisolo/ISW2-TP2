@@ -635,10 +635,33 @@ El \textit{Actuador} recibe las peticiones web y las atiende.
 \subsubsection{Nodo regional}
 
 \begin{itemize}
+  \item El \textit{servidor web} sirve la interfaz y atiende pedidos de operaciones, que son delegadas al \textit{actuador web}.
 
-  \item El servidor web sirve la interfaz y atiende pedidos de operaciones, que son delegadas al actuador web.
-  \item El actuador web ...
+  \item El \textit{actuador web} se encarga de responder todas las operaciones solicitadas por la interfaz. Para esto delega muchas responsabilidades a otros componentes y repositorios del nodo regional. Además es quien se encarga de interactuar con otros nodos regionales, comunicándose con sus respectivos actuadores web.
 
+  \item El \textit{autenticador} recibe pedidos del \textit{actuador web} para identificar usuarios a partir del par usuario/contraseña ingresado. Para esto se comunica con el \textit{repositorio de usuarios}, que almacena dicha información.
+
+  \item La evaluación de la efectividad de las campañas es coordinada por el componente \textit{actualizador de datos de evaluación de campaña}. Hay tres formas por las que se evalúa una campaña:
+
+  \begin{itemize}
+    \item Por medio de la interfaz web. Para esto el \textit{actuador web} se comunica con el \textit{actualizador de datos de evaluación de campaña} para actualizar una campaña con los datos ingresados manualmente por un usuario desde la interfaz web.
+
+    \item Por medio de las respuestas recibidas a mensajes de evaluación, que son recibidas desde el componente \textit{receptor de mensajes}.
+
+    \item Por medio de un \textit{sistema de datos de evaluación} externo.
+  \end{itemize}
+
+  Los datos recogidos por los medios anteriores se almacenan en el \textit{repositorio de datos de evaluación de campañas}.
+
+  \item El actuador web responde consultas de estado y evaluación de campañas leyendo el \textit{caché de estado de campañas} y \textit{caché de evaluación de campañas}. En estos cachés se guardan resultados de consultas frecuentes que de otra forma se realizarían contra los repositorios correspondientes, y la antigüedad de estos datos nunca supera un máximo de minutos preestablecido.
+
+  \item El \textit{actualizador de backups} consulta todos los repositorios del nodo periódicamente y almacena backups de los mismos en servidores externos provistos por el \textit{sistema de abono de datos}.
+
+  \item El emisor de mensajes consulta periódicamente el \textit{repositorio de campañas} y el \textit{system timer} para decidir qué mensajes deben ser enviados en ese momento, consulta los destinatarios de los mismos al \textit{repositorio de grupos de personas} y realiza el envío de los mismos por el servicio que corresponda (\textit{servicio de email}, \textit{servicio de SMS} o \textit{servicio de Whatsapp}.)
+
+  \item El \textit{receptor de mensajes} consulta estos servicios para obtener potenciales respuestas a los mensajes de evaluación asociados a las campañas, y en caso de recibir alguno, notifica al \textit{actualizador de datos de evaluación de campañas}.
+
+  \item Finalmente, el \textit{repositorio de uso de datos} es actualizado por todos los conectores de tipo selector cada vez que se envían datos por medio del proveedor de abono de datos para contabilizar los datos transmitidos y poder verificar que se esté facturando el tráfico que realmente corresponda.
 \end{itemize}
 
 
