@@ -69,6 +69,12 @@
   \end{center}
 }
 
+\newcommand{\diagrama}[1]{
+  \begin{center}
+    \includegraphics[width=16cm]{#1}
+  \end{center}
+}
+
 \newcommand{\riesgo}[7]{
   \underline{Riesgo {#1}:}
   \begin{itemize}   
@@ -537,6 +543,13 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
     {Los usuarios pueden utilizar fácilmente el sistema.}
     {Los usuarios tardan menos de 30 minutos en aprender a crear campañas en el sistema.}
 
+\newpage
+\section{Diagrama de componentes y conectores}
+\diagrama{./diagramas/nodoregional.pdf}
+\diagrama{./diagramas/actuadorweb.pdf}
+\diagrama{./diagramas/emisordemensajes.pdf}
+\diagrama{./diagramas/receptordemensajes.pdf}
+\diagrama{./diagramas/conectorselector.pdf}
 
 \newpage
 \section{Justificación de la arquitectura}
