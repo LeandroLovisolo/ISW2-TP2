@@ -639,7 +639,7 @@ En lo que sigue, explicamos la arquitectura realizada.
 
   Los datos recogidos por los medios anteriores se almacenan en el \textit{repositorio de datos de evaluación de campañas}.
 
-  \item El actuador web responde consultas de estado y evaluación de campañas leyendo el \textit{caché de estado de campañas} y \textit{caché de evaluación de campañas}. En estos cachés se guardan resultados de consultas frecuentes que de otra forma se realizarían contra los repositorios correspondientes, y la antigüedad de estos datos nunca supera un máximo de minutos preestablecido.
+  \item El actuador web responde consultas de estado y evaluación de campañas leyendo la \textit{Vista materializada de estado de campañas} y la \textit{Vista materializada de evaluación de campañas}. En estas vistas materializadas se guardan resultados de consultas frecuentes que de otra forma se realizarían contra los repositorios correspondientes, y la antigüedad de estos datos nunca supera un máximo de minutos preestablecido.
 
   \item El \textit{actualizador de backups} consulta todos los repositorios del nodo periódicamente y almacena backups de los mismos en servidores externos provistos por el \textit{sistema de abono de datos}.
 
@@ -683,7 +683,7 @@ El componente \textit{Emisor de mensajes} cuenta con los siguientes componentes:
 \item El Emisor de señales heartbeat envía cada cierta frecuencia un ``latido'' que recibirán los receptores de señales heartbeat del resto de los nodos.
 \item El Receptor de datos de evaluación manual recibe resultados medidos manualmente por los usuarios para guardarlos en el Actualizador de datos de evaluación de campañas. Por ejemplo, si un usuario desea almacenar en el sistema la cantidad de asistencias a una carrera o cantidad de aprobados en un examen, lo debe ingresar manualmente en el sistema.
 \item El Administrador de campañas recibe los mensajes del Receptor de mensajes web que corresponden a la gerencia de campañas. Entre las peticiones posibles, se encuentran la creación, modificación y supresión de campañas como también la provisión de resultados de las mismas. Dicha información se encuentra almacenada en los Repositorios correspondientes a las campañas. Por otro lado, el Administrador se comunica con otros nodos regionales para proveerles información sobre las campañas en caso de que lo requieran.
-\item El Reportador de resultado de campaña responde los petitorios correspondientes a los resultados que se generan en base al Repositorio de datos de campañas (que conserva la totalidad de mensajes recibidos y los datos que puedan servir para la evaluación de los resultados). Dichos resultados son valores que se actualizan en el Caché de evaluación de campañas.
+\item El Reportador de resultado de campaña responde los petitorios correspondientes a los resultados que se generan en base al Repositorio de datos de campañas (que conserva la totalidad de mensajes recibidos y los datos que puedan servir para la evaluación de los resultados). Dichos resultados son valores que se actualizan en la Vista materializada de evaluación de campañas.
 \end{itemize}
 
 \subsubsection{Conector selector}
