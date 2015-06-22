@@ -538,23 +538,22 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
 
 \newpage
 \section{Justificación de la arquitectura}
-Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. 	
+Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}.	
 
 En lo que sigue, explicamos la arquitectura realizada:
 
-\begin{itemize}
+En primer lugar, decidimos representar la interfaz a la que accede un usuario con un \textit{Servidor web}. El mismo se encarga de notificarle al \textit{Actuador web} la tarea requerida por el usuario.
 
-\item Utilizamos un repositorio de campañas para el almacenamiento cifrado de los datos y otro para el almacenamiento de campañas (los mensajes de cada una de éstas).
+Utilizamos un repositorio de campañas para el almacenamiento cifrado de los datos y otro para el almacenamiento de campañas (los mensajes de cada una de éstas).
 
-\item Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contraseñas de los mismos.
+Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contraseñas de los mismos.
 
-\item El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
+El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
 
-\item El selector de conexión (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
+El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
 
-\item El actuador recibe las peticiones web y las atiende.
+El \textit{Actuador} recibe las peticiones web y las atiende.
 
-\end{itemize}
 
 \newpage
 \section{Arquitectura TP1}
@@ -565,7 +564,7 @@ Para la arquitectura del TP1, nos basamos en el diagrama de clases realizado con
 \item El \textit{Servidor web} representa a la interfaz que se le muestra al usuario cuando desea ingresar al sistema.
 \item El \textit{Receptor de peticiones web} se encarga del manejo de los pedidos realizados por los usuarios. Éstas pueden incluir información sobre las mediciones de eficacia, sobre el estado de las campañas, agregado o supresión de mensajes, etc.
 \item El \textit{Autenticador} verifica el usuario y la contraseña ingresados por el usuario para otorgarle los permisos que le corresponden.
-\item El \textit{Autenticador} recibe la información del \textit{Repositorio de credenciales}, quien almacena la información de los directivos y maestros.
+\item El \textit{Repositorio de credenciales} envía la información al \textit{Autenticador}, quien almacena la información de los directivos y maestros.
 \item El \textit{Repositorio de mensajes} almacena los mensajes de las campañas. Funciona como repositorio (cuando un mensaje debe ser enviado al emisor de mensajes) y como blackboard (cuando un usuario agrega un nuevo mensaje).
 \item El \textit{Repositorio de eventos} tiene guardados los eventos de las campañas y tiene el mismo rol que el repositorio de mensajes.
 \item El \textit{Emisor de mensajes} es el encargado de transmitir los mensajes en tiempo y hora junto con los destinatarios de los mismos al \textit{Servicio de SMS} para que éste los envíe.
