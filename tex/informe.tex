@@ -423,8 +423,8 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
     {Media}
     {Medio}
     {Medio}
-    {Realizar backups de los nodos regionales con cierta frecuencia y almacenarlos de forma cifrada en una empresa tercerizada; controlar el estado de los nodos dentro de las regiones}
-    {Utilizar el backup cifrado en la empresa para solventar la baja del servidor mientras se arregla. Registrar las acciones realizadas mientras el nodo está caído y actualizarlas con la información fresca al arreglarse.}
+    {Realizar backups de los nodos regionales con cierta frecuencia y almacenarlos de forma cifrada en una empresa tercerizada. Monitorear desde cada nodo el estado del resto de los nodos de las otras regiones mediante heartbeat.}
+    {Notificar vía email al responsable técnico de un nodo al momento de detectarse su caída. Utilizar el backup cifrado en la empresa para lanzar una nueva instancia del nodo regional caído.}
 
 \riesgo{3}
     {El modelo de abono que contabiliza los mensajes enviados está por migrar pronto a mejores servidores, por lo que se esperan algunas fallas de comunicación durante la transición.}
