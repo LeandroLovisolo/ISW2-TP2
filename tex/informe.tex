@@ -414,7 +414,7 @@ En lo que sigue, se presenta el diagrama de Gantt con la planificación estimada
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Análisis de riesgos}
-
+\label{riesgos:r1}
 \riesgo{1}
     {Mantener la disponibilidad del servicio en la totalidad del país es importante. Sin embargo, se conoce que la disponibilidad del servicio puede tener dificultades en algunas zonas, como por ejemplo la patagonia.}
     {Alta}
@@ -460,7 +460,7 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
 Cada escenario está planteado en base al QAW y a los requerimientos o peticiones realizadas por los stakeholders en el enunciado.
 
 \subsection{Disponibilidad}
-
+\label{disponibilidad:atr1}
 \escenario{El sistema debe ser capaz de soportar fallas de los distintos enlaces de comunicación.}
     {Interna.}
     {Se produce una falla en la conexión.}
@@ -498,7 +498,7 @@ Cada escenario está planteado en base al QAW y a los requerimientos o peticione
     {Los datos presentados tienen una antiguedad de a lo sumo 10 minutos.}
 
 \subsection{Seguridad}
-
+\label{seguridad:atr1}
 \escenario{Quiere asegurar confidencialidad de todos los datos involucrados.}
     {Externa.}
     {Un individuo malintencionado intenta interferir los mensajes que se envían entre enlaces.}
@@ -677,9 +677,13 @@ El componente \textit{Emisor de mensajes} cuenta con los siguientes componentes:
 
 \subsubsection{Conector selector}
 
-El conector está compuesto por un \textit{proxy de conexión} el cual se encarga de transmitir la información que recive del \textit{emisor de mensajes} y asegura la disponibilidad de la conexión. Para esto, verifica si el sistema de Arsat esta caído, en cuyo caso, le envía la información al \textit{componente receptor} a traves del \textit{sistema de abono privado}. Por otro lado, se encarga de actualizar en el \textit{repositorio de uso de datos}, la cantidad de información que fué enviada a traves del \textit{sistema de abono privado}. 
+El conector selector funciona como intermediario entre un componente \textit{Emisor de mensajes} y otro \textit{Componente receptor}.
 
-Toda la información que se envía mediante este conector es cifrada para garantizar que la conexíón es segura y que ninguna persona la puede robar y$/$o modificar.
+Este conector está compuesto por un \textit{Proxy de conexión} el cual se encarga de hacer llegar la información enviada entre el emisor y el receptor utilizando los medios disponibles. Para esto, verifica si el sistema de ArSat esta caído, si no lo estuviera, utiliza este medio para enviar la información, en caso contrario, utiliza el \textit{Sistema de abono privado}. De esta manera, garantizamos el atributo de disponibilidad planteado anteriormente en \ref{disponibilidad:atr1}.
+
+Por otro lado, el componente se encarga de actualizar en el \textit{repositorio de uso de datos}, la cantidad de información que fué enviada a traves del \textit{sistema de abono privado}. Esto es utilizado como solución a la desconfianza del \textit{Sistema de abono privado} a la hora de facturar el uso de su sistema y al riesgo observado en \ref{riesgos:r1}.
+
+Toda la información que se envía mediante este conector es cifrada para garantizar que la conexíón sea segura, cumpliendo así con el atributo de seguridad planteado en \ref{seguridad:atr1}.
 
 \newpage
 
