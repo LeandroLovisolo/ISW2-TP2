@@ -478,6 +478,7 @@ Cada escenario está planteado en base al QAW y a los requerimientos o peticione
     {Cada intento de creación de campaña es exitoso bajo operación normal.}
 
 \subsection{Modificabilidad}
+\label{modificabilidad:atr1}
 \escenario{Y pensar en ampliar los canales de comunicación además del SMS sumar Twitter, Whatsapp, Facebook Messenger, etc.}
     {Interna.}
     {Se desea extender el sistema.}
@@ -558,8 +559,7 @@ Cada escenario está planteado en base al QAW y a los requerimientos o peticione
 En lo que sigue, presentamos la arquitectura del trabajo con vista de Componentes y Conectores. Para la realización de la misma, utilizamos conectores creados específicamente para nuestras necesidades. Éstos son:
 
 \begin{figure}[h!]
-\centering
-  \diagrama{./diagramas/referenciadeconectores.pdf}
+  \diagramadeancho{12cm}{./diagramas/referenciadeconectores.pdf}
   \caption{Referencia de los conectores creados.}
 \end{figure}
 
@@ -622,9 +622,7 @@ Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contr
 
 El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
 
-Se cuenta con un componente \textit{Emisor de mensajes}. Éste, a su vez, cuenta internamente con un componente \textit{Notificador de mensajes a enviar}, que consulta periódicamente al \textit{Repositorio de campañas} auxiliado del \textit{System timer} para decidir los mensajes que requieren ser enviados, y decide los destinatarios de los mismos consultando al \textit{Repositorio de grupos de personas}. El envío de los mensajes se realiza publicando los mismos en un bus publish/subscribe, al que subscriben tres comonentes: \textit{Emisor de mensajes via email}, \textit{Emisor de mensajes via Whatsapp} y \textit{Emisor de mensajes via SMS}. Éstos finalmente delegan al servicio externo correspondiente para efectuar el envío de los mensajes. Se utiliza un bus publish/subscribe para permitir fácilmente y con impacto mímimo la incorporación de nuevos emisores para nuevos canales de envío en el futuro.
 
-De manera análoga, se cuenta con un componente \textit{Receptor de mensajes}. Éste también posee un bus publish/subscribe con tres componentes de recepción de mensajes vía SMS, Whatsapp y email que se comunican con los servicios externos correspondientes y publican los mensajes en el bus a medida que llegan. Un componente \textit{Director de mensajes} se subscribe a los mismos, y se comunica con el \textit{Actualizador de datos de evaluación de campañas} enviando las actualizaciónes correspondientes. La motivación del bus publish/subscribe también es permitir la facilidad de cambio a la hora de agregar nuevos canales de envío y recepción de mensajes.
 
 El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
 
@@ -667,22 +665,44 @@ El \textit{Actuador} recibe las peticiones web y las atiende.
 
 \subsubsection{Receptor de mensajes}
 
-Pendiente.
+A grandes razgos, el componente \textit{Receptor de mensajes} tiene la responsabilidad de recibir los mensajes entrantes correspondientes a las respuestas de las preguntas realizadas para la evaluación de las campañas.
 
+El componente cuenta con la siguiente estructura:
+
+\begin{itemize}
+  \item Un bus publish/subscribe con tres componentes de recepción de mensajes vía SMS, Whatsapp y email que se comunican con los servicios externos correspondientes y publican los mensajes en el bus a medida que llegan. La motivación del bus publish/subscribe también es permitir la facilidad de cambio a la hora de agregar nuevos canales de envío y recepción de mensajes, cumpliendo con el atributo de modificabilidad mencionado en \ref{modificabilidad:atr1}.
+
+  \item Un componente \textit{Director de mensajes} el cual se subscribe a al bus descripto para recibir los mensajes o respuestas recibidas de distintos medios. Este componente procesa las respuestas para que el \textit{Actualizador de datos de evaluación de campañas} pueda consumirlas, pudiendo posteriormente realizar las actualizaciónes correspondientes.
+
+\end{itemize}
 
 \subsubsection{Emisor de mensajes}
 
-Pendiente.
+El componente \textit{Emisor de mensajes} cuenta con los siguientes componentes:
 
+\begin{itemize}
+  \item Un \textit{Notificador de mensajes a enviar}, que consulta periódicamente al \textit{Repositorio de campañas} auxiliado del \textit{System timer} para decidir los mensajes que requieren ser enviados, y decide los destinatarios de los mismos consultando al \textit{Repositorio de grupos de personas}. Una vez conocidos los mensajes y los destinatarios, se publican los mismos en el bus publish/subscribe anterior.
+
+  \item Un bus publish/subscribe, al que subscriben tres componentes: \textit{Emisor de mensajes via email}, \textit{Emisor de mensajes via Whatsapp} y \textit{Emisor de mensajes via SMS}. Éstos toman los mensajes que les corresponden del bus para efectuar el envío de los mensajes mediante los distintos servicios externos. Se utiliza un bus publish/subscribe para permitir fácilmente y con impacto mímimo la incorporación de nuevos emisores para nuevos canales de envío en el futuro, satisfaciendo el atributo de modificabilidad planteado anteriormente en \ref{modificabilidad:atr1}.
+\end{itemize}
 
 \subsubsection{Actuador web}
 
-Pendiente.
-
+\begin{itemize}
+\item El Receptor de mensajes web se encarga de aceptar los mensajes provenientes de la interfaz web. El mismo cataloga a qué componente le corresponde atender el mensaje recibido.
+\item El Administrador de grupos de personas se encarga de seleccionar a las personas afectadas por la petición recibida. El mismo busca los usuarios necesarios en el Repositorio de grupos de personas, que se encuentran previamente fraccionados por distintos criterios (por ejemplo: fumador, no fumador).
+\item El Receptor de mensajes heartbeat se encarga de recibir las señales heartbeat de los distintos nodos pertenecientes al sistema. En el caso en el que alguno de ellos no fuera recibido, se envía la notificación al Servicio mail. Por lo tanto, el Receptor de mensajes es también el encargado de verificar que todos los nodos hayan enviado su señal heartbeat.
+\item El Emisor de señales heartbeat envía cada cierta frecuencia un ``latido'' que recibirán los receptores de señales heartbeat del resto de los nodos.
+\item El Receptor de datos de evaluación manual recibe resultados medidos manualmente por los usuarios para guardarlos en el Actualizador de datos de evaluación de campañas. Por ejemplo, si un usuario desea almacenar en el sistema la cantidad de asistencias a una carrera o cantidad de aprobados en un examen, lo debe ingresar manualmente en el sistema.
+\item El Administrador de campañas recibe los mensajes del Receptor de mensajes web que corresponden a la gerencia de campañas. Entre las peticiones posibles, se encuentran la creación, modificación y supresión de campañas como también la provisión de resultados de las mismas. Dicha información se encuentra almacenada en los Repositorios correspondientes a las campañas. Por otro lado, el Administrador se comunica con otros nodos regionales para proveerles información sobre las campañas en caso de que lo requieran.
+\item El Reportador de resultado de campaña responde los petitorios correspondientes a los resultados que se generan en base al Repositorio de datos de campañas (que conserva la totalidad de mensajes recibidos y los datos que puedan servir para la evaluación de los resultados). Dichos resultados son valores que se actualizan en el Caché de evaluación de campañas.
+\end{itemize}
 
 \subsubsection{Conector selector}
 
-Pendiente.
+El conector está compuesto por un \textit{proxy de conexión} el cual se encarga de transmitir la información que recive del \textit{emisor de mensajes} y asegura la disponibilidad de la conexión. Para esto, verifica si el sistema de Arsat esta caído, en cuyo caso, le envía la información al \textit{componente receptor} a traves del \textit{sistema de abono privado}. Por otro lado, se encarga de actualizar en el \textit{repositorio de uso de datos}, la cantidad de información que fué enviada a traves del \textit{sistema de abono privado}. 
+
+Toda la información que se envía mediante este conector es cifrada para garantizar que la conexíón es segura y que ninguna persona la puede robar y$/$o modificar.
 
 \newpage
 
