@@ -333,12 +333,12 @@ A continuación se detallan las tareas diagramadas para los casos de uso incluid
 
 \begin{tabular}{lp{13cm}l}
   \hline
-  CU2 & Creando una campaña desde el sector público/privado & 60h \\
+  CU2 & Creando una campaña desde el sector público/privado & 84h \\
   \hline
   T01 & Investigar librerías y herramientas para la implementación de las campañas & 20h \\
   T02 & Diseño de la interfaz del usuario & 8h \\
-  T03 & Implementación de CU2 & 16h \\
-  T04 & Testing de CU2 & 16h \\
+  T03 & Implementación de CU2 & 28h \\
+  T04 & Testing de CU2 & 28h \\
   \hline
 \end{tabular}
 
@@ -359,12 +359,12 @@ A continuación se detallan las tareas diagramadas para los casos de uso incluid
 
 \begin{tabular}{lp{13cm}l}
   \hline
-  CU4 & Autenticando usuario & 16h \\
+  CU4 & Autenticando usuario & 56h \\
   \hline
-  T01 & Diseño de la interfaz del usuario para autenticación & 4h \\
-  T02 & Diseño de los requisitos mínimos de las contraseñas & 4h \\
-  T02 & Implementación de CU4 & 4h \\
-  T03 & Testing de CU4 & 4h \\
+  T01 & Diseño de la interfaz del usuario para autenticación & 14h \\
+  T02 & Diseño de los requisitos mínimos de las contraseñas & 14h \\
+  T02 & Implementación de CU4 & 14h \\
+  T03 & Testing de CU4 & 14h \\
   \hline
 \end{tabular}
 
@@ -547,26 +547,25 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
 
 \section{Arquitectura BigTize}
 
-\subsection{Justificación de la arquitectura}
-Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}.	
+\subsection{Diagrama de componentes y conectores}
+En lo que sigue, presentamos la arquitectura del trabajo con vista de Componentes y Conectores. Para la realización de la misma, utilizamos conectores creados específicamente para nuestras necesidades. Éstos son:
 
-En lo que sigue, explicamos la arquitectura realizada:
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=13cm]{./diagramas/referenciadeconectores.pdf}
+  \caption{Referencia de los conectores creados.}
+\end{figure}
 
-En primer lugar, decidimos representar la interfaz a la que accede un usuario con un \textit{Servidor web}. El mismo se encarga de notificarle al \textit{Actuador web} la tarea requerida por el usuario.
+\begin{itemize}
+  \item \textbf{Conector encriptado asíncrono:} conector asíncrono de la cátedra con cifrado.
+  \item \textbf{Conector selector asíncrono:} funciona como un proxy, redirige los datos por el sistema de ArSat o por el sistema de abono de datos hasta su destino. Prioriza el sistema de ArSat, si este no está disponible utiliza el sistema de abono de datos. Guarda la cantidad de datos que se envían por el sistema de abono de datos para llevar auditoría de lo utilizado. Los datos siempre viajan cifrados. Se encuentra definido a posteriori.
+  \item \textbf{Conector asíncrono:} conector clásico de la cátedra.
+  \item \textbf{Conector encriptado client/server:} conector client/server de la cátedra con cifrado.
+  \item \textbf{Conector selector client/server:} conector selector definido anteriormente con capacidad client/server.
+  \item \textbf{Conector síncrono:} conector clásico de la cátedra.
+  \item \textbf{Conector repositorio encriptado:} conector clásico de la cátedra con cifrado.
 
-Utilizamos un repositorio de campañas para el almacenamiento cifrado de los datos y otro para el almacenamiento de campañas (los mensajes de cada una de éstas).
-
-Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contraseñas de los mismos.
-
-El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
-
-Se cuenta con un componente \textit{Emisor de mensajes}. Éste, a su vez, cuenta internamente con un componente \textit{Notificador de mensajes a enviar}, que consulta periódicamente al \textit{Repositorio de campañas} auxiliado del \textit{System timer} para decidir los mensajes que requieren ser enviados, y decide los destinatarios de los mismos consultando al \textit{Repositorio de grupos de personas}. El envío de los mensajes se realiza publicando los mismos en un bus publish/subscribe, al que subscriben tres comonentes: \textit{Emisor de mensajes via email}, \textit{Emisor de mensajes via Whatsapp} y \textit{Emisor de mensajes via SMS}. Éstos finalmente delegan al servicio externo correspondiente para efectuar el envío de los mensajes. Se utiliza un bus publish/subscribe para permitir fácilmente y con impacto mímimo la incorporación de nuevos emisores para nuevos canales de envío en el futuro.
-
-De manera análoga, se cuenta con un componente \textit{Receptor de mensajes}. Éste también posee un bus publish/subscribe con tres componentes de recepción de mensajes vía SMS, Whatsapp y email que se comunican con los servicios externos correspondientes y publican los mensajes en el bus a medida que llegan. Un componente \textit{Director de mensajes} se subscribe a los mismos, y se comunica con el \textit{Actualizador de datos de evaluación de campañas} enviando las actualizaciónes correspondientes. La motivación del bus publish/subscribe también es permitir la facilidad de cambio a la hora de agregar nuevos canales de envío y recepción de mensajes.
-
-El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
-
-El \textit{Actuador} recibe las peticiones web y las atiende.
+\end{itemize}
 
 \newpage
 
@@ -599,6 +598,30 @@ El \textit{Actuador} recibe las peticiones web y las atiende.
 \diagrama{./diagramas/conectorselector.pdf}
 
 \newpage
+
+\subsection{Justificación de la arquitectura}
+Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}.	
+
+En lo que sigue, explicamos la arquitectura realizada:
+
+En primer lugar, decidimos representar la interfaz a la que accede un usuario con un \textit{Servidor web}. El mismo se encarga de notificarle al \textit{Actuador web} la tarea requerida por el usuario.
+
+Utilizamos un repositorio de campañas para el almacenamiento cifrado de los datos y otro para el almacenamiento de campañas (los mensajes de cada una de éstas).
+
+Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contraseñas de los mismos.
+
+El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
+
+Se cuenta con un componente \textit{Emisor de mensajes}. Éste, a su vez, cuenta internamente con un componente \textit{Notificador de mensajes a enviar}, que consulta periódicamente al \textit{Repositorio de campañas} auxiliado del \textit{System timer} para decidir los mensajes que requieren ser enviados, y decide los destinatarios de los mismos consultando al \textit{Repositorio de grupos de personas}. El envío de los mensajes se realiza publicando los mismos en un bus publish/subscribe, al que subscriben tres comonentes: \textit{Emisor de mensajes via email}, \textit{Emisor de mensajes via Whatsapp} y \textit{Emisor de mensajes via SMS}. Éstos finalmente delegan al servicio externo correspondiente para efectuar el envío de los mensajes. Se utiliza un bus publish/subscribe para permitir fácilmente y con impacto mímimo la incorporación de nuevos emisores para nuevos canales de envío en el futuro.
+
+De manera análoga, se cuenta con un componente \textit{Receptor de mensajes}. Éste también posee un bus publish/subscribe con tres componentes de recepción de mensajes vía SMS, Whatsapp y email que se comunican con los servicios externos correspondientes y publican los mensajes en el bus a medida que llegan. Un componente \textit{Director de mensajes} se subscribe a los mismos, y se comunica con el \textit{Actualizador de datos de evaluación de campañas} enviando las actualizaciónes correspondientes. La motivación del bus publish/subscribe también es permitir la facilidad de cambio a la hora de agregar nuevos canales de envío y recepción de mensajes.
+
+El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
+
+El \textit{Actuador} recibe las peticiones web y las atiende.
+
+\newpage
+
 \section{Arquitectura TP1}
 
 Para la arquitectura del TP1, nos basamos en el diagrama de clases realizado considerando las decisiones tomadas a lo largo de la elaboración del mismo.
