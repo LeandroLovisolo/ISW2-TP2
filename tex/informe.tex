@@ -743,10 +743,12 @@ El diagrama resultante es el siguiente:
 
 Como primer diferencia entre las arquitecturas del TP 1 y TP 2, podemos observar un importante incremento en la complejidad de las mismas al pasar de un sistema de un único servidor en una escuela a uno de gran escala capaz de soportar diferentes tipos de mensajes y distribuido en diferentes lugares del país.
 
-A grandes rasgos, la apariencia de ambas arquitecturas es similar; hay repositorios de usuarios y mensajes, un servidor web para acceder al sistema y servicios de mensajes que se encargan del envío. Sin embargo, el sistema del TP2 se adapta a grandes escalas y amplias tecnologías que obligan a considerar una mayor cantidad de servicios, control del resto de los sistemas, múltiples conexiones y backups de los sistemas.
+A grandes rasgos, la apariencia de ambas arquitecturas es similar; hay repositorios de usuarios y mensajes, un servidor web para acceder al sistema y servicios de mensajes que se encargan del envío. Sin embargo, el sistema del TP2 se adapta a grandes escalas y amplias tecnologías que obligan a considerar una mayor cantidad de servicios, control del resto de los sistemas, múltiples conexiones y backups de los datos.
+
+Dado que el sistema del TP1 funciona en una única computadora, no nos pareció necesaria la utilización de paralelismo. En cambio, los nodos regionales deben atender múltiples pedidos simultáneamente y procesar datos e información a una velocidad razonable, por lo que se necesita concurrencia de los módulos. 
+
+Por otro lado, en el TP2 debimos asegurar seguridad de los datos, por lo que los conectores son cifrados.
 \begin{comment}
-En primer lugar observamos que al tener mensajes de directos sensores en la tierra no necesitábamos drones para tomar fotos ni componentes para analizar imágenes,
-la información sobre el suelo era accesible directamente.
 
 De un modo similar en la comunicación con la interfaz meteorológica evitábamos tener que localizar el lugar de origen de los datos, y nos ahorramos
 los componentes específicos para analizar los datos. 
