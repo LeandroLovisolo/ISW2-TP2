@@ -544,25 +544,10 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
     {Los usuarios tardan menos de 30 minutos en aprender a crear campañas en el sistema.}
 
 \newpage
-\section{Diagrama de componentes y conectores}
 
-\subsection{Nodo regional}
-\diagrama{./diagramas/nodoregional.pdf}
+\section{Arquitectura BigTize}
 
-\subsection{Actuador web}
-\diagrama{./diagramas/actuadorweb.pdf}
-
-\subsection{Emisor de mensajes}
-\diagrama{./diagramas/emisordemensajes.pdf}
-
-\subsection{Receptor de mensajes}
-\diagrama{./diagramas/receptordemensajes.pdf}
-
-\subsection{Conector selector (proxy)}
-\diagrama{./diagramas/conectorselector.pdf}
-
-\newpage
-\section{Justificación de la arquitectura}
+\subsection{Justificación de la arquitectura}
 Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}.	
 
 En lo que sigue, explicamos la arquitectura realizada:
@@ -583,6 +568,35 @@ El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sis
 
 El \textit{Actuador} recibe las peticiones web y las atiende.
 
+\newpage
+
+\subsection{Diagrama de componentes y conectores}
+
+\subsubsection{Nodo regional}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=16cm]{./diagramas/nodoregional.pdf}
+\end{figure}
+
+\newpage
+
+\subsubsection{Actuador web}
+\diagrama{./diagramas/actuadorweb.pdf}
+
+\newpage
+
+\subsubsection{Emisor de mensajes}
+\diagrama{./diagramas/emisordemensajes.pdf}
+
+\newpage
+
+\subsubsection{Receptor de mensajes}
+\grafico{./diagramas/receptordemensajes.pdf}
+
+\newpage
+
+\subsubsection{Conector selector (proxy)}
+\diagrama{./diagramas/conectorselector.pdf}
 
 \newpage
 \section{Arquitectura TP1}
