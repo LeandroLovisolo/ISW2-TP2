@@ -63,15 +63,15 @@
 \renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\appendixpagename}{Apéndices}
 
-\newcommand{\grafico}[1]{
-  \begin{center}
-    \includegraphics[width=15cm]{#1}
-  \end{center}
-}
-
 \newcommand{\diagrama}[1]{
   \begin{center}
     \includegraphics[width=16cm]{#1}
+  \end{center}
+}
+
+\newcommand{\diagramadeancho}[2]{
+  \begin{center}
+    \includegraphics[width=#1]{#2}
   \end{center}
 }
 
@@ -552,7 +552,7 @@ En lo que sigue, presentamos la arquitectura del trabajo con vista de Componente
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=13cm]{./diagramas/referenciadeconectores.pdf}
+  \diagrama{./diagramas/referenciadeconectores.pdf}
   \caption{Referencia de los conectores creados.}
 \end{figure}
 
@@ -571,35 +571,39 @@ En lo que sigue, presentamos la arquitectura del trabajo con vista de Componente
 
 \subsection{Diagrama de componentes y conectores}
 
-\subsubsection{Nodo regional}
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=16cm]{./diagramas/nodoregional.pdf}
-\end{figure}
 
+\subsubsection{Nodo regional}
+
+\diagramadeancho{14cm}{./diagramas/nodoregional.pdf}
 \newpage
+
 
 \subsubsection{Actuador web}
-\diagrama{./diagramas/actuadorweb.pdf}
 
+\diagrama{./diagramas/actuadorweb.pdf}
 \newpage
+
 
 \subsubsection{Emisor de mensajes}
-\diagrama{./diagramas/emisordemensajes.pdf}
 
+\diagrama{./diagramas/emisordemensajes.pdf}
 \newpage
+
 
 \subsubsection{Receptor de mensajes}
-\grafico{./diagramas/receptordemensajes.pdf}
 
+\diagramadeancho{12cm}{./diagramas/receptordemensajes.pdf}
 \newpage
+
 
 \subsubsection{Conector selector (proxy)}
-\diagrama{./diagramas/conectorselector.pdf}
 
+\diagrama{./diagramas/conectorselector.pdf}
 \newpage
 
+
 \subsection{Justificación de la arquitectura}
+
 Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}.	
 
 En lo que sigue, explicamos la arquitectura realizada:
@@ -639,7 +643,7 @@ Para la arquitectura del TP1, nos basamos en el diagrama de clases realizado con
 
 El diagrama resultante es el siguiente:
 
-\grafico{./diagramas/arquitecturaTP1.png}
+\diagrama{./diagramas/arquitecturaTP1.png}
 \newpage
 
 \section{Comparación}
