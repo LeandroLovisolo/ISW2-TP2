@@ -652,8 +652,9 @@ El diagrama resultante es el siguiente:
 \diagrama{./diagramas/arquitecturaTP1.png}
 \newpage
 
-\section{Comparación}
+\section{Comparación y conclusiones}
 Como primer diferencia entre las arquitecturas del TP1 y TP2, podemos observar un importante incremento en la complejidad de las mismas al pasar de un sistema de un único servidor en una escuela a uno de gran escala capaz de soportar diferentes tipos de mensajes y distribuido en diferentes lugares del país.
+A grandes rasgos, la apariencia de ambas arquitecturas es similar; hay repositorios de usuarios y mensajes, un servidor web para acceder al sistema y servicios de mensajes que se encargan del envío. Sin embargo, el sistema del TP2 se adapta a grandes escalas y amplias tecnologías que obligan a considerar una mayor cantidad de servicios, control del resto de los sistemas, múltiples conexiones y backups de los sistemas.
 \begin{comment}
 En primer lugar observamos que al tener mensajes de directos sensores en la tierra no necesitábamos drones para tomar fotos ni componentes para analizar imágenes,
 la información sobre el suelo era accesible directamente.
@@ -676,8 +677,7 @@ arquitectura permaneció intacto de un TP a otro (aunque casi imposible de visua
 ambas arquitecturas presentan un estilo similar: existen sensores, el sistema les pide información a esos sensores, la procesa y en función del resultado y de 
 lógicas preestablecidas que consulta a partir de repositorios toma decisiones que envía a un conjunto de actuadores que intervienen en el medio de la(s) planta(s).
 \end{comment}
-\newpage
-\section{Conclusiones}
+
 Desde el punto de vista del desarrollo tenemos pocas herramientas para comparar los métodos usados a lo largo de la materia (Scrum y UP),
 dado que trabajando con Scrum realizamos una única iteración y trabajando con UP ni siquiera llegamos a desarrollar nada efectivamente.
 Además, como cada método lo aplicamos a proyectos de tamaños distintos, la comparación que hagamos estará sesgada por cosas propias de la
