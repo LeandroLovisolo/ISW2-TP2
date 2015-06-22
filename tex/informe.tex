@@ -63,15 +63,15 @@
 \renewcommand{\appendixtocname}{Apéndices}
 \renewcommand{\appendixpagename}{Apéndices}
 
-\newcommand{\grafico}[1]{
-  \begin{center}
-    \includegraphics[width=15cm]{#1}
-  \end{center}
-}
-
 \newcommand{\diagrama}[1]{
   \begin{center}
     \includegraphics[width=16cm]{#1}
+  \end{center}
+}
+
+\newcommand{\diagramadeancho}[2]{
+  \begin{center}
+    \includegraphics[width=#1]{#2}
   \end{center}
 }
 
@@ -549,37 +549,67 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
     {Los usuarios tardan menos de 30 minutos en aprender a crear campañas en el sistema.}
 
 \newpage
-\section{Diagrama de componentes y conectores}
+
+\section{Arquitectura BigTize}
+
+\subsection{Diagrama de componentes y conectores}
 En lo que sigue, presentamos la arquitectura del trabajo con vista de Componentes y Conectores. Para la realización de la misma, utilizamos conectores creados específicamente para nuestras necesidades. Éstos son:
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=7cm]{./diagramas/referencias.png}
+  \diagrama{./diagramas/referenciadeconectores.pdf}
   \caption{Referencia de los conectores creados.}
-  \label{fig:gantt}
 \end{figure}
 
-El \textit{Conector encriptado} le agrega la capacidad de cifrado al conector original.
-Por otro lado, el \textit{Conector selector} funciona como un proxy y el mismo se encuentra modelado posteriormente.
-Por último, el \textit{Conector asincrónico} es el visto en clase, a diferencia de que no conseguimos la flecha correspondiente para representarlo.
+\begin{itemize}
+  \item \textbf{Conector encriptado asíncrono:} conector asíncrono de la cátedra con cifrado.
+  \item \textbf{Conector selector asíncrono:} funciona como un proxy, redirige los datos por el sistema de ArSat o por el sistema de abono de datos hasta su destino. Prioriza el sistema de ArSat, si este no está disponible utiliza el sistema de abono de datos. Guarda la cantidad de datos que se envían por el sistema de abono de datos para llevar auditoría de lo utilizado. Los datos siempre viajan cifrados. Se encuentra definido a posteriori.
+  \item \textbf{Conector asíncrono:} conector clásico de la cátedra.
+  \item \textbf{Conector encriptado client/server:} conector client/server de la cátedra con cifrado.
+  \item \textbf{Conector selector client/server:} conector selector definido anteriormente con capacidad client/server.
+  \item \textbf{Conector síncrono:} conector clásico de la cátedra.
+  \item \textbf{Conector repositorio encriptado:} conector clásico de la cátedra con cifrado.
+  \item \textbf{Conector client/server:} conector clásico de la cátedra.
 
-\subsection{Nodo regional}
-\diagrama{./diagramas/nodoregional.pdf}
-
-\subsection{Actuador web}
-\diagrama{./diagramas/actuadorweb.pdf}
-
-\subsection{Emisor de mensajes}
-\diagrama{./diagramas/emisordemensajes.pdf}
-
-\subsection{Receptor de mensajes}
-\diagrama{./diagramas/receptordemensajes.pdf}
-
-\subsection{Conector selector (proxy)}
-\diagrama{./diagramas/conectorselector.pdf}
+\end{itemize}
 
 \newpage
-\section{Justificación de la arquitectura}
+
+\subsection{Diagrama de componentes y conectores}
+
+
+\subsubsection{Nodo regional}
+
+\diagramadeancho{14cm}{./diagramas/nodoregional.pdf}
+\newpage
+
+
+\subsubsection{Actuador web}
+
+\diagrama{./diagramas/actuadorweb.pdf}
+\newpage
+
+
+\subsubsection{Emisor de mensajes}
+
+\diagrama{./diagramas/emisordemensajes.pdf}
+\newpage
+
+
+\subsubsection{Receptor de mensajes}
+
+\diagramadeancho{12cm}{./diagramas/receptordemensajes.pdf}
+\newpage
+
+
+\subsubsection{Conector selector (proxy)}
+
+\diagrama{./diagramas/conectorselector.pdf}
+\newpage
+
+
+\subsection{Justificación de la arquitectura}
+
 Para la realización de la arquitectura correspondiente al Sistema BigTiza se tuvieron en cuenta, principalmente, los atributos de calidad descritos anteriormente. La vista construída corresponde a la de \textit{Componentes y Conectores}.	
 
 En lo que sigue, explicamos la arquitectura realizada:
@@ -600,8 +630,8 @@ El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sis
 
 El \textit{Actuador} recibe las peticiones web y las atiende.
 
-
 \newpage
+
 \section{Arquitectura TP1}
 
 Para la arquitectura del TP1, nos basamos en el diagrama de clases realizado considerando las decisiones tomadas a lo largo de la elaboración del mismo.
@@ -619,7 +649,7 @@ Para la arquitectura del TP1, nos basamos en el diagrama de clases realizado con
 
 El diagrama resultante es el siguiente:
 
-\grafico{./diagramas/arquitecturaTP1.png}
+\diagrama{./diagramas/arquitecturaTP1.png}
 \newpage
 
 \section{Comparación}
