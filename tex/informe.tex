@@ -667,10 +667,11 @@ El componente \textit{Emisor de mensajes} cuenta con los siguientes componentes:
 
 Pendiente.
 
-
 \subsubsection{Conector selector}
 
-Pendiente.
+El conector está compuesto por un \textit{proxy de conexión} el cual se encarga de transmitir la información que recive del \textit{emisor de mensajes} y asegura la disponibilidad de la conexión. Para esto, verifica si el sistema de Arsat esta caído, en cuyo caso, le envía la información al \textit{componente receptor} a traves del \textit{sistema de abono privado}. Por otro lado, se encarga de actualizar en el \textit{repositorio de uso de datos}, la cantidad de información que fué enviada a traves del \textit{sistema de abono privado}. 
+
+Toda la información que se envía mediante este conector es cifrada para garantizar que la conexíón es segura y que ninguna persona la puede robar y$/$o modificar.
 
 \newpage
 
