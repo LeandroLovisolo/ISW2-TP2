@@ -545,6 +545,18 @@ Para describirlos, decidimos detallar escenarios correspondientes a cada uno de 
 
 \newpage
 \section{Diagrama de componentes y conectores}
+En lo que sigue, presentamos la arquitectura del trabajo con vista de Componentes y Conectores. Para la realización de la misma, utilizamos conectores creados específicamente para nuestras necesidades. Éstos son:
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=7cm]{./diagramas/referencias.png}
+  \caption{Referencia de los conectores creados.}
+  \label{fig:gantt}
+\end{figure}
+
+El \textit{Conector encriptado} le agrega la capacidad de cifrado al conector original.
+Por otro lado, el \textit{Conector selector} funciona como un proxy y el mismo se encuentra modelado posteriormente.
+Por último, el \textit{Conector asincrónico} es el visto en clase, a diferencia de que no conseguimos la flecha correspondiente para representarlo.
 
 \subsection{Nodo regional}
 \diagrama{./diagramas/nodoregional.pdf}
