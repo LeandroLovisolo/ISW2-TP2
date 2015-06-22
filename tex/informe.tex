@@ -565,6 +565,10 @@ Utilizamos un repositorio de usuarios, donde se guardan los usuarios y las contr
 
 El repositorio de grupos de personas almacenan los números de las personas por su categoría (si son fumadores, si son deportistas, etc.).
 
+Se cuenta con un componente \textit{Emisor de mensajes}. Éste, a su vez, cuenta internamente con un componente \textit{Notificador de mensajes a enviar}, que consulta periódicamente al \textit{Repositorio de campañas} auxiliado del \textit{System timer} para decidir los mensajes que requieren ser enviados, y decide los destinatarios de los mismos consultando al \textit{Repositorio de grupos de personas}. El envío de los mensajes se realiza publicando los mismos en un bus publish/subscribe, al que subscriben tres comonentes: \textit{Emisor de mensajes via email}, \textit{Emisor de mensajes via Whatsapp} y \textit{Emisor de mensajes via SMS}. Éstos finalmente delegan al servicio externo correspondiente para efectuar el envío de los mensajes. Se utiliza un bus publish/subscribe para permitir fácilmente y con impacto mímimo la incorporación de nuevos emisores para nuevos canales de envío en el futuro.
+
+De manera análoga, se cuenta con un componente \textit{Receptor de mensajes}. Éste también posee un bus publish/subscribe con tres componentes de recepción de mensajes vía SMS, Whatsapp y email que se comunican con los servicios externos correspondientes y publican los mensajes en el bus a medida que llegan. Un componente \textit{Director de mensajes} se subscribe a los mismos, y se comunica con el \textit{Actualizador de datos de evaluación de campañas} enviando las actualizaciónes correspondientes. La motivación del bus publish/subscribe también es permitir la facilidad de cambio a la hora de agregar nuevos canales de envío y recepción de mensajes.
+
 El \textit{Conector selector} (cumpliendo el rol de un proxy) verifica si el sistema de Arsat está caído, en cuyo caso elige la opción de utilizar el sistema de abono para la comunicación entre nodos regionales.
 
 El \textit{Actuador} recibe las peticiones web y las atiende.
@@ -590,6 +594,69 @@ El diagrama resultante es el siguiente:
 
 \grafico{./diagramas/arquitecturaTP1.png}
 \newpage
-\section{Comparación y conclusiones}
+
+\section{Comparación}
+Como primer diferencia entre las arquitecturas del TP1 y TP2, podemos observar un importante incremento en la complejidad de las mismas al pasar de un sistema de un único servidor en una escuela a uno de gran escala capaz de soportar diferentes tipos de mensajes y distribuido en diferentes lugares del país.
+\begin{comment}
+En primer lugar observamos que al tener mensajes de directos sensores en la tierra no necesitábamos drones para tomar fotos ni componentes para analizar imágenes,
+la información sobre el suelo era accesible directamente.
+
+De un modo similar en la comunicación con la interfaz meteorológica evitábamos tener que localizar el lugar de origen de los datos, y nos ahorramos
+los componentes específicos para analizar los datos. 
+
+Por otro lado, al haber menor necesidad de guardar información a lo largo del tiempo, hacían falta menos repositorios distribuidos a lo largo de la arquitectura.
+El único repositorio de la arquitectura actual que viene de la arquitectura del TP anterior es el de Plan(es) Maestro(s), un concepto que sobrevive todo cambio de
+arquitecturas por su importancia en el dominio.
+Muchos de los repositorios nuevos que se agregaron tienen que ver con el gran flujo de datos y eventos y la imposibilidad de responder a todos ellos en tiempo real,
+algo que en el TP1 no ocurría.
+
+En general vemos que la sucesión de colaboraciones desde la llegada de nueva información hasta el accionar (o no) de los actuadores 
+era mucho más simple y corta en el TP1 que en el 2do, presentando componentes con responsabilidades más generales, como los ``Supervisores'' que combina responsabilidades
+de que en el TP2 aparecen distribuidas entre la comunicación con los sensores, el analizador de los datos, almacenador, controlador de estadios, planificador, etc.
+
+Sin embargo, si bien las diferencias son variadas y profundas, observamos cierta similitud general entre los diagramas. Algo que podríamos llamar la ``esencia'' de la 
+arquitectura permaneció intacto de un TP a otro (aunque casi imposible de visualizar al ojo no entrenado en el dominio del problema). Dicho en términos de la materia,
+ambas arquitecturas presentan un estilo similar: existen sensores, el sistema les pide información a esos sensores, la procesa y en función del resultado y de 
+lógicas preestablecidas que consulta a partir de repositorios toma decisiones que envía a un conjunto de actuadores que intervienen en el medio de la(s) planta(s).
+\end{comment}
+\newpage
+\section{Conclusiones}
+Desde el punto de vista del desarrollo tenemos pocas herramientas para comparar los métodos usados a lo largo de la materia (Scrum y UP),
+dado que trabajando con Scrum realizamos una única iteración y trabajando con UP ni siquiera llegamos a desarrollar nada efectivamente.
+Además, como cada método lo aplicamos a proyectos de tamaños distintos, la comparación que hagamos estará sesgada por cosas propias de la
+complejidad de los problemas que quizás no forman parte de la metodología en sí, entorpeciendo nuestra capacidad de diferenciarlas únicamente
+por sus características.
+
+Sin embargo, sí pudimos comparar las etapas iniciales de ambas metodologías, viendo claramente una diferencia entre realizar una planificación
+y un diseño antes de comenzar a programar; y empezar a programar sin planificación previa e ir diseñando a medida que se desarrolla. Si bien
+en el primer TP consideramos que nuestra aplicación de Scrum era imperfecta pues estábamos acostumbrados a diseñar por adelantado,
+en este segundo TP descubrimos que se puede planificar a un nivel más profundo del que conocíamos.
+
+Desde un punto de vista subjetivo, podemos resaltar de UP la priorización de los atributos de calidad como ``drivers'' de las decisiones arquitectónicas,
+entendiendo que con Scrum se podrían perder de vista en pos de resolver cuestiones funcionales, y que modificar una aplicación ya construida para que
+satisfaga cierto atributo de calidad no contemplado previamente es mucho más costoso que diseñarla teniéndolo en cuenta desde un principio.
+
+Sin embargo, preferimos Scrum a la hora de organizar los tiempos y responsabilidades del proyecto. Como ya dijimos no tuvimos la oportunidad de
+experimentarlo nosotros mismos, pero consideramos que, por ejemplo, un error en la estimación de esfuerzo en Scrum tiene consecuencias mínimas
+en comparación con las que tendría el mismo error (de estimación de horas/hombre) en UP: en Scrum como mucho una historia quedará afuera de una iteración y
+tendrá que ser subdividida más adelante, mientras que en UP puede producir un efecto dominó que afecta todas las iteraciones posteriores
+(porque ya se planificaron previamente) y eventualmente postergar todo el proyecto en caso de que la tarea sea crítica.
+
+Entendemos, de todos modos, que combinar las características que destacamos de cada una de las metodologías es no-trivial. Afortunadamente, proponer una metodología
+superadora excede el scope de este trabajo práctico.
+
+A la hora de la comparación entre ``programming in the small'' y ``programming in the large'' podemos mencionar la diferencia entre las vistas más usadas: a la hora del 
+diseño OO utilizamos tanto diagramas de clases (estático) como de objetos (dinámico) mientras que en la arquitectura se le da más importancia a la vista de
+componentes y conectores (dinámica). Creemos que esto tiene que ver con que la arquitectura a gran escala se puede apreciar de manera más simple cuando vemos
+cómo estarán los componentes ``en funcionamiento''.
+
+Otra característica distintiva, aunque quizás sea un sesgo de parte de las metodologías usadas, es que la programación a pequeña escala está más orientada
+a cumplir con atributos funcionales, mientras en que la programación a gran escala hay que darle mucha más relevancia a cuestiones no funcionales. Esto podría explicarse
+si pensamos que en geneneral los productos más grandes son los que tienen más riesgos asociados relacionados con escalabilidad, seguridad, performance, etc.
+
+Desde el punto de vista específico de la realización del trabajo, encontramos dificultades para diferenciar el análisis de riesgos de los atributos de calidad.
+En mayor o menor medida, descubrimos que la mayoría de los atributos de calidad tienen algún riesgo relacionado (y viceversa), por lo que por momentos nos 
+parecía redundante realizar ambos análisis. Quizás la diferencia se nota mejor en un proyecto real con stakeholders reales en el cual el análisis de riesgos
+precede temporalmente a la documentación de atributos de calidad, pero de todos modos encontramos muchos puntos comunes a ambos análisis.
 
 \end{document}
